@@ -26,8 +26,6 @@ To help the academic community to reuse any electronic device or component. This
 - Recover password
 - Edit profile information
 - Access Menu - view the products that are for sell
-- Add an item to the shopping cart
-- Remove an item to the shopping cart
 - Complete a purchase
 - Create a sales ad
 - Edit a sales ad
