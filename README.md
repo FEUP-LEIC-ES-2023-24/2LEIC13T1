@@ -21,9 +21,20 @@ To help the academic community to reuse any electronic device or component. This
 
 ## Features
 
-- Create Account - First time users must create an account and provide informations in order to have access.
-- Log in 
-- Access Menu - view the products that are for sell, 
+- Create Account - first time users must create an account and provide information to have access
+- Log in
+- Recover password
+- Edit profile information
+- Access Menu - view the products that are for sell
+- Add an item to the shopping cart
+- Remove an item to the shopping cart
+- Complete a purchase
+- Create a sales ad
+- Edit a sales ad
+- Delete a sales ad
+- Search - search for specific products
+- User Messaging
+- FAQ Section
 
 ## Dependencies
 
