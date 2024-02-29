@@ -26,12 +26,11 @@ To help the academic community to reuse any electronic device or component. This
 - Recover password
 - Edit profile information
 - Access Menu - view the products that are for sell
-- Complete a purchase
+- Send a message to a seller
 - Create a sales ad
 - Edit a sales ad
 - Delete a sales ad
 - Search - search for specific products
-- User Messaging
 - FAQ Section
 - [Admin] Remove ilegal ads
 
