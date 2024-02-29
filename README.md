@@ -33,6 +33,7 @@ To help the academic community to reuse any electronic device or component. This
 - Search - search for specific products
 - User Messaging
 - FAQ Section
+- [Admin] Remove ilegal ads
 
 ## Dependencies
 
