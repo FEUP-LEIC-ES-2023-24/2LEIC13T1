@@ -1,6 +1,6 @@
 # L.EIC Software Engineering Project - 2LEIC13T1
 
-The L.EIC MarTech project was developed for the Software Engineering course in the 2023/24 academic year of the 2nd year of L.EIC at FEUP.
+The L.EIC MarTechPlace project was developed for the Software Engineering course in the 2023/24 academic year of the 2nd year of L.EIC at FEUP.
 
 ## Project Description
 
@@ -26,13 +26,13 @@ To help the academic community to reuse any electronic device or component. This
 - Recover password
 - Edit profile information
 - Access Menu - view the products that are for sell
-- Complete a purchase
+- Use the chat
 - Create a sales ad
 - Edit a sales ad
 - Delete a sales ad
 - Search - search for specific products
-- User Messaging
 - FAQ Section
+- [Admin] Remove ilegal ads
 
 ## Dependencies
 
