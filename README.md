@@ -26,7 +26,7 @@ To help the academic community to reuse any electronic device or component. This
 - Recover password
 - Edit profile information
 - Access Menu - view the products that are for sell
-- Send a message to a seller
+- Use the chat
 - Create a sales ad
 - Edit a sales ad
 - Delete a sales ad
