@@ -13,7 +13,7 @@ rectangle martechplace{
    user --> (Recover password)
    user --> (Search ads)
    user --> (Access FAQ Section)
-   user --> (Creat a sales ad)
+   user --> (Create a sales ad)
    user --> (Edit a sales ad)
    user --> (Delete a sales ad)
    user --> (Use the chat)
