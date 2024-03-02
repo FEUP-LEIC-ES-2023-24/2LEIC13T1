@@ -1,8 +1,15 @@
-"As a <user role> I <want/need/can> <goal> so that <reason>".
+"As a <user role> I <want/need/can> <goal> so that <reason>". It's recommended that the <reason> is possible to test later.
 
 As an Admin, I need to be able to delete ilegal ads so that it can be removed from the plataform.
 As an Admin, I want to search ads so that I can find ads related to a specific key word.
+
 As a User, I want to use the chat to talk with the person who publish an ad.
 As a User, I want to create a sales ad so that my add can be visible to other users.
 As a User, I need to edit a a sales ad so that I can change the price of a product.
 As a User, I need to delete a sales ad so that it can be removed from the plataform.
+As a User, I want to access the FAQ Section so that I can check some info.
+
+As a User without register, I want to create an account so that I can be registered in the platform.
+As a User without register, I want to access the FAQ Section so that I can check some info.
+As a User without register, I want to search ads so that I can find ads related to a specific key word.
+
