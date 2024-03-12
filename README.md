@@ -9,29 +9,37 @@ Our product addresses the pressing needs of the academic community by offering a
 
 ## Vision
 
-To provide access to technological material in a practical, cheap and sustainable manner.
+Connecting Porto Academic Community through technology reuse for a sustainable future.
 
 ## Target Group
 
-The Academic community in Porto.
+Porto's Academic Community.
 
 ## General Objectives
 
-To help the academic community to reuse any electronic device or component. This application is capable of promoting a great movement of solidarity among students in Porto’s academic community. As we are constantly covered in technology, buying and disposing of equipment inappropriately while other people can use it.
+- Facilitate the reuse of electronic devices among students.
+- Promote sustainability within the academic community.
+- Promover uma culture of solidarity and resourcefulness.
 
 ## Features
 
-- Create Account - First time users must create an account and provide informations in order to have access.
-- Log in 
-- Access Menu - view the products that are for sell, 
+1. Create account and Profile - users can register and manage their profiles.
+2. Browse and search devices - Enable users to easily find and filter desired devices.
+3. Post and Manage Ads - Allow users to list devices for sale and manage their listings.
+4. Secure Messaging - Facilitate secure communication between buyers and sellers.
+5. Report Inappropriate Content: Maintain a safe and trustworthy platform.
 
 ## Dependencies
 
-- 
+- Basic Search and Filtering functionalities.
+- User Authentication in a secure way and account validation / approval mechanisms (optional).
+- Integração dum gateway de pagamento (optional).
 
 ## Sustainable Development Goals
 
-The main SDG aimed in this project is the twelveth (Sustainable Production and Consume). And the secondary are the fourth (Quality Education) and eleventh (Sustainable Cities and Comunnities) 
+SDG 12: Responsible Consumption and Production (Primary focus).
+SDG 4: Quality Education (Secondary focus).
+SDG 11: Sustainable Cities and Communities (Secondary focus).
 
 
 
