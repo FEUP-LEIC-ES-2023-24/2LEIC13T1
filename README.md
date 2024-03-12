@@ -44,6 +44,14 @@ Porto's Academic Community.
 <br />
 
 ### Physical Design 
+<p align="center" justify="center">
+  <img src="Docs/Physical_Diagram.drawio.png"/>
+</p>
+<p align="center">
+  <b><i>Gif 1. Logical Architecture</i></b>
+</p>
+<br>
+<br />
 
 ## Dependencies
 
