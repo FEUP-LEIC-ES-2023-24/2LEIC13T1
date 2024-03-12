@@ -23,9 +23,11 @@ Porto's Academic Community.
 
 ## Features
 
-- Create Account - First time users must create an account and provide informations in order to have access.
-- Log in 
-- Access Menu - view the products that are for sell, 
+1. Create account and Profile - users poderem registar e gerir o perfil deles
+2. Browse and search devices - Enable users to easily find and filter desired devices.
+3. Post and Manage Ads - Allow users to list devices for sale and manage their listings.
+4. Messaging de forma segura - Facilitate secure communication between buyers and sellers.
+5. Report Inappropriate Content: Maintain a safe and trustworthy platform.
 
 ## Dependencies
 
@@ -35,9 +37,9 @@ Porto's Academic Community.
 
 ## Sustainable Development Goals
 
-SDG 12: Responsible Consumption and Production (Primary focus).
-SDG 4: Quality Education (Secondary focus).
-SDG 11: Sustainable Cities and Communities (Secondary focus).
+- SDG 12: Responsible Consumption and Production (Primary focus).
+- SDG 4: Quality Education (Secondary focus).
+- SDG 11: Sustainable Cities and Communities (Secondary focus).
 
 
 
