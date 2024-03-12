@@ -29,6 +29,12 @@ Porto's Academic Community.
 4. Messaging de forma segura - Facilitate secure communication between buyers and sellers.
 5. Report Inappropriate Content: Maintain a safe and trustworthy platform.
 
+## Domain Model
+
+### Logical Design
+
+### Physical Design 
+
 ## Dependencies
 
 - Basic Search and Filtering functionalities.
