@@ -36,7 +36,7 @@ Porto's Academic Community.
   <img src="docs/Logical1.png"/>
 </p>
 <p align="center">
-  <b><i>Gif 1. Preview of some functionalities of the game</i></b>
+  <b><i>Gif 1. Logical Architecture</i></b>
 </p>
 <br>
 <br />
