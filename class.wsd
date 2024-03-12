@@ -1,0 +1,71 @@
+@startuml casa da musica
+class sala{
+    numero
+}
+class setor{
+    numero
+}
+class lugar{
+    numero
+}
+class funcionario{
+    id
+    nome
+    email
+    telefone
+}
+class r_instalações
+class r_cultural
+class espetaculo{
+    nome
+    descrição
+    data_hora
+    duração
+    preço
+    data_hora_limite
+}
+class artista{
+    nome
+    nacionalidade
+    biografia
+}
+class cliente_geral
+class cliente{
+    nome
+    nacionalidade
+    morada
+    email
+}
+class caixa
+class estatisticas{
+    afluencia
+    receitas
+}
+class bilhete{
+    setor
+    numero_lugar
+    preço
+}
+class reserva{
+    numero
+    data_hora_limite
+    preço_total
+}
+
+funcionario <|-- r_instalações
+funcionario <|-- r_cultural
+funcionario <|-- caixa
+setor "1" o-- "1..*" lugar
+sala "1" o-- "1..*" setor
+sala "1" -- "1" espetaculo
+artista "1..*" -- "1..*" espetaculo
+estatisticas "1" -- "*" espetaculo
+r_cultural "*" -- "*" estatisticas : consulta
+cliente_geral "*" -- "*" espetaculo : consulta
+bilhete "*" -- "1" espetaculo
+cliente "1" -- "*" bilhete
+(cliente, bilhete) .. reserva
+cliente_geral "1" -- "*" bilhete : compra
+r_instalações "1" -- "*" sala : regista
+
+@enduml
