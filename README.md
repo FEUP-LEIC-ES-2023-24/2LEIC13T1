@@ -35,7 +35,7 @@ Porto's Academic Community.
 
 ### Logical Design
 <p align="center" justify="center">
-  <img src="docs/Logical1.drawio.png"/>
+  <img src="Docs/Logical1.drawio.png"/>
 </p>
 <p align="center">
   <b><i>Gif 1. Logical Architecture</i></b>
