@@ -38,7 +38,7 @@ Porto's Academic Community.
   <img src="Docs/Logical1.drawio.png"/>
 </p>
 <p align="center">
-  <b><i>Gif 1. Logical Architecture</i></b>
+  <b><i>Logical Architecture</i></b>
 </p>
 <br>
 <br />
@@ -48,7 +48,7 @@ Porto's Academic Community.
   <img src="Docs/Physical_Diagram.drawio.png"/>
 </p>
 <p align="center">
-  <b><i>Gif 1. Logical Architecture</i></b>
+  <b><i>Physical Architecture</i></b>
 </p>
 <br>
 <br />
