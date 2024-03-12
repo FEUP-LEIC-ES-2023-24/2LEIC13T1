@@ -32,7 +32,14 @@ Porto's Academic Community.
 ## Domain Model
 
 ### Logical Design
-
+<p align="center" justify="center">
+  <img src="docs/Logical1.png"/>
+</p>
+<p align="center">
+  <b><i>Gif 1. Preview of some functionalities of the game</i></b>
+</p>
+<br>
+<br />
 ### Physical Design 
 
 ## Dependencies
