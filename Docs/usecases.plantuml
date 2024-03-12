@@ -1,0 +1,25 @@
+@startuml martechplace
+
+scale 2
+left to right direction
+skinparam packageStyle rect
+actor "User Without Register" as unreg
+actor "User" as user
+actor "Admin" as admin
+rectangle martechplace{
+   unreg --> (Create Account)
+   unreg --> (Search ads)
+   unreg --> (Access FAQ Section)
+   user --> (Recover password)
+   user --> (Search ads)
+   user --> (Access FAQ Section)
+   user --> (Create a sales ad)
+   user --> (Edit a sales ad)
+   user --> (Delete a sales ad)
+   user --> (Use the chat)
+   user --> (Edit profile information)
+   admin --> (Search ads)
+   admin --> (Delete ilegal ads)
+}
+
+@enduml

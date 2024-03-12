@@ -1,0 +1,21 @@
+@startuml martechplace
+class ad{
+    description
+    price
+}
+class category{
+    name
+    description
+}
+class message{
+    content
+}
+class user{
+    name
+    email
+}
+
+user "1" -- "*" ad
+ad "*" -- "1" category
+message "*" -- "2" user
+

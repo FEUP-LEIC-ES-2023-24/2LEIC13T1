@@ -1,6 +1,6 @@
 # L.EIC Software Engineering Project - 2LEIC13T1
 
-The L.EIC MarTech project was developed for the Software Engineering course in the 2023/24 academic year of the 2nd year of L.EIC at FEUP.
+The L.EIC MarTechPlace project was developed for the Software Engineering course in the 2023/24 academic year of the 2nd year of L.EIC at FEUP.
 
 ## Project Description
 
@@ -23,11 +23,9 @@ Porto's Academic Community.
 
 ## Features
 
-1. Create account and Profile - users can register and manage their profiles.
-2. Browse and search devices - Enable users to easily find and filter desired devices.
-3. Post and Manage Ads - Allow users to list devices for sale and manage their listings.
-4. Secure Messaging - Facilitate secure communication between buyers and sellers.
-5. Report Inappropriate Content: Maintain a safe and trustworthy platform.
+- Create Account - First time users must create an account and provide informations in order to have access.
+- Log in 
+- Access Menu - view the products that are for sell, 
 
 ## Dependencies
 
