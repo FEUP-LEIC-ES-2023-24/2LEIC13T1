@@ -5,12 +5,15 @@ As an Admin, I want to search ads so that I can find ads related to a specific k
 
 As a User, I want to use the chat to talk with the person who publish an ad.
 As a User, I want to create a sales ad so that my add can be visible to other users.
-As a User, I need to edit a a sales ad so that I can change the price of a product.
+As a User, I need to edit a sales ad so that I can change the price of a product.
+As a User, I need to edit a sales ad so that I can change the description of a product.
 As a User, I need to delete a sales ad so that it can be removed from the plataform.
 As a User, I want to access the FAQ Section so that I can check some info.
 As a User, I want to recover password so that i can reenter my account.
 As a User, I want to search ads so that I can find ads related to a specific key word.
-As a User, I want to edit profile information so that i can keep my profile updated.
+As a User, I want to edit profile information so that i can update profile.
+As a User, I want to filter search results based on different criteria (e.g., price range, location) so that I can find what I need more efficiently.
+As a User, I want to report inappropriate content in ads, so that the Admin can review them.
 
 As a User without register, I want to create an account so that I can be registered in the platform.
 As a User without register, I want to access the FAQ Section so that I can check some info.
