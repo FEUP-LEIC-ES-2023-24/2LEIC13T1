@@ -23,15 +23,27 @@ Porto's Academic Community.
 
 ## Features
 
-1. Create account and Profile - users poderem registar e gerir o perfil deles
+1. Create account and profile - users can register and manager their profiles.
+
 2. Browse and search devices - Enable users to easily find and filter desired devices.
-3. Post and Manage Ads - Allow users to list devices for sale and manage their listings.
-4. Messaging de forma segura - Facilitate secure communication between buyers and sellers.
-5. Report Inappropriate Content: Maintain a safe and trustworthy platform.
+
+3. Post and manage ads - Allow users to list devices for sale and manage their listings.
+
+4. Messaging in a safer way - Facilitate secure communication between buyers and sellers.  
+
+5. Report inappropriate content: Maintain a safe and trustworthy platform.
 
 ## Requirements
 
 ### Domain Model
+<p align="center" justify="center">
+  <img src="Docs\Domain.drawio.png"/>
+</p>
+<p align="center">
+  <b><i>Domain Model</i></b>
+</p>
+<br>
+<br />
 
 ### Logical Design
 <p align="center" justify="center">
