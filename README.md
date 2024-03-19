@@ -26,7 +26,6 @@ Porto's Academic Community.
 
 1. Create account and profile - Users can register and manager their profiles.
 
->>>>>>> 3af46c7600f90b773af6422f07c255040b964641
 2. Browse and search devices - Enable users to easily find and filter desired devices.
 
 3. Post and manage ads - Allow users to list devices for sale and manage their listings.
