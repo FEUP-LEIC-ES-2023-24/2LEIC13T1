@@ -23,7 +23,7 @@ Porto's Academic Community.
 
 ## Features
 
-1. Create account and Profile - users poderem registar e gerir o perfil deles
+1. Create account and Profile - Enable users to register and manage their profile
 2. Browse and search devices - Enable users to easily find and filter desired devices.
 3. Post and Manage Ads - Allow users to list devices for sale and manage their listings.
 4. Messaging de forma segura - Facilitate secure communication between buyers and sellers.
