@@ -23,41 +23,59 @@ Porto's Academic Community.
 
 ## Features
 
-1. Create account and Profile - users poderem registar e gerir o perfil deles
+
+1. Create account and profile - Users can register and manager their profiles.
+
+>>>>>>> 3af46c7600f90b773af6422f07c255040b964641
 2. Browse and search devices - Enable users to easily find and filter desired devices.
-3. Post and Manage Ads - Allow users to list devices for sale and manage their listings.
-4. Messaging de forma segura - Facilitate secure communication between buyers and sellers.
-5. Report Inappropriate Content: Maintain a safe and trustworthy platform.
+
+3. Post and manage ads - Allow users to list devices for sale and manage their listings.
+
+4. Messaging in a safer way - Facilitate secure communication between buyers and sellers.  
+
+5. Report inappropriate content - Maintain a safe and trustworthy platform.
 
 ## Requirements
 
 ### Domain Model
 
+<p align="center" justify="center">
+  <img src="Docs\Domain.drawio.png"/>
+</p>
+<p align="center">
+  <b><i>Domain Model</i></b>
+</p>
+
+In the domain model, a User can have multiples Ads, within this Ads it can have one Category. The Message happens between two Users, and a User can have many Messages.
+
 ### Logical Design
+
 <p align="center" justify="center">
   <img src="Docs/Logical1.drawio.png"/>
 </p>
 <p align="center">
   <b><i>Logical Architecture</i></b>
 </p>
-<br>
-<br />
+
+The Marketplace UI communicate with the system Logic, which if needed can access the database within the system or access the chat service, which is a external service.
 
 ### Physical Design 
+
 <p align="center" justify="center">
   <img src="Docs/Physical_Diagram.drawio.png"/>
 </p>
 <p align="center">
   <b><i>Physical Architecture</i></b>
 </p>
-<br>
-<br />
+
+
+Users can access the app via their cellphones, enabling communication between the app and the server over the internet. The server facilitates data storage and retrieval by interfacing with the database. Additionally, the chat service, integrated into the Marketplace server but not in it, facilitating user-to-user communication.
 
 ## Dependencies
 
 - Basic Search and Filtering functionalities.
 - User Authentication in a secure way and account validation / approval mechanisms (optional).
-- Integração dum gateway de pagamento (optional).
+- Integration of a gateway for payment (optional).
 
 ## Sustainable Development Goals
 
