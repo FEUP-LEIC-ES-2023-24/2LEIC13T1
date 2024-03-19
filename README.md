@@ -23,7 +23,7 @@ Porto's Academic Community.
 
 ## Features
 
-1. Create account and profile - users can register and manager their profiles.
+1. Create account and profile - Users can register and manager their profiles.
 
 2. Browse and search devices - Enable users to easily find and filter desired devices.
 
@@ -31,39 +31,43 @@ Porto's Academic Community.
 
 4. Messaging in a safer way - Facilitate secure communication between buyers and sellers.  
 
-5. Report inappropriate content: Maintain a safe and trustworthy platform.
+5. Report inappropriate content - Maintain a safe and trustworthy platform.
 
 ## Requirements
 
 ### Domain Model
+
 <p align="center" justify="center">
   <img src="Docs\Domain.drawio.png"/>
 </p>
 <p align="center">
   <b><i>Domain Model</i></b>
 </p>
-<br>
-<br />
+
+In the domain model, a User can have multiples Ads, within this Ads it can have one Category. The Message happens between two Users, and a User can have many Messages.
 
 ### Logical Design
+
 <p align="center" justify="center">
   <img src="Docs/Logical1.drawio.png"/>
 </p>
 <p align="center">
   <b><i>Logical Architecture</i></b>
 </p>
-<br>
-<br />
+
+The Marketplace UI communicate with the system Logic, which if needed can access the database within the system or access the chat service, which is a external service.
 
 ### Physical Design 
+
 <p align="center" justify="center">
   <img src="Docs/Physical_Diagram.drawio.png"/>
 </p>
 <p align="center">
   <b><i>Physical Architecture</i></b>
 </p>
-<br>
-<br />
+
+
+Users can access the app via their cellphones, enabling communication between the app and the server over the internet. The server facilitates data storage and retrieval by interfacing with the database. Additionally, the chat service, integrated into the Marketplace server but not in it, facilitating user-to-user communication.
 
 ## Dependencies
 
