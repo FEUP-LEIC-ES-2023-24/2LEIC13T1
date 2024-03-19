@@ -14,17 +14,12 @@ As a User, I want to access the FAQ Section so that I can check some info.
 As a User, I want to recover password so that i can reenter my account.
 As a User, I want to search ads so that I can find ads related to a specific key word.
 As a User, I want to edit profile information so that i can update profile.
+As a user, I want to search profiles, so that I can find users by their username.
+As a user, I want to check the profile of the seller when visiting a ad, so I can see the seller's contact information
 As a User, I want to report inappropriate content in ads, so that the Admin can review them.
-
 
 As a User without register, I want to create an account so that I can be registered in the platform.
 As a User without register, I want to access the FAQ Section so that I can check some info.
 As a User without register, I want to search ads so that I can find ads related to a specific key word.
-
-
-Backlog
-As a User, I want to mark ads as favorites so that I can I can easily find them later.
-As a User, I want to receive notifications when there are updates or new messages in the chat, so that I can stay informed.
-As a User, I want to filter search results based on different criteria (e.g., price range, location) so that I can find what I need more efficiently.
 
 
