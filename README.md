@@ -69,7 +69,7 @@ Porto's Academic Community.
 
 - Basic Search and Filtering functionalities.
 - User Authentication in a secure way and account validation / approval mechanisms (optional).
-- Integração dum gateway de pagamento (optional).
+- Integration of a gateway for payment (optional).
 
 ## Sustainable Development Goals
 
