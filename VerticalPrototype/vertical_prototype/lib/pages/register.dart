@@ -1,11 +1,12 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:vertical_prototype/pages/mainpage.dart';
 
-class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+class Register extends StatelessWidget {
+  const Register({super.key});
 
   // This widget is the root of your application.
   @override
@@ -15,7 +16,7 @@ class LoginPage extends StatelessWidget {
       backgroundColor: Colors.grey[300],
       appBar: AppBar(
         backgroundColor:Colors.grey[300],
-        title: Text('Sign In', style: GoogleFonts.amaranth(fontSize:25)),
+        title: Text('Register', style: GoogleFonts.amaranth(fontSize:25)),
         // Adicionando um botão de voltar no canto superior esquerdo
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
@@ -31,23 +32,35 @@ class LoginPage extends StatelessWidget {
             //Icon
             Icon(
               Icons.lock,
-              size: 100,
+              size: 50,
             ),
 
 
-            SizedBox(height: 70,),
+            SizedBox(height: 30,),
             //some text
             Text(
-              'Hey! We are Martechplace, You are welcome here!',
-              style: GoogleFonts.amaranth(  
+              'Register yourself!',
+              style: GoogleFonts.amaranth(
                 fontSize: 25,
-
               ),
               textAlign: TextAlign.center,
             ),
-            
+
             SizedBox(height: 50,),
             //username textfield
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 15.0),
+              child: TextField(
+                decoration: InputDecoration(
+                  enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.white)),
+                  focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.black)),
+                  fillColor: Colors.white, filled:true,
+                  hintText: "Full Name",
+                  hintStyle: TextStyle(color: Colors.grey[500]),
+                ),
+              ),
+            ),
+            SizedBox(height: 25,),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 15.0),
               child: TextField(
@@ -60,7 +73,6 @@ class LoginPage extends StatelessWidget {
                 ),
               ),
             ),
-
             SizedBox(height: 25,),
             //password textfield
             Padding(
@@ -76,23 +88,7 @@ class LoginPage extends StatelessWidget {
                 obscureText: true,
               ),
             ),
-
-            SizedBox(height: 10,),
             //forgot password?
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 25.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Text(
-                    'Forgot password?',
-                    style: GoogleFonts.amaranth(  
-                      fontSize: 15,
-                    ),
-                  ),
-                ],
-              ),
-            ),
             SizedBox(height: 25,),
             //sign in button
             GestureDetector(
@@ -107,11 +103,11 @@ class LoginPage extends StatelessWidget {
                 child: Container(
                   height: 45.0,
                   decoration: BoxDecoration(
-                    color: Colors.black,
-                    borderRadius: BorderRadius.all(Radius.circular(5.0))
+                      color: Colors.black,
+                      borderRadius: BorderRadius.all(Radius.circular(5.0))
                   ),
                   child: Center(child: Text(
-                    "Sign In",
+                    "Register",
                     style: GoogleFonts.amaranth(textStyle: TextStyle(fontSize: 20, color: Colors.white)
                     ),
                   ),),
@@ -131,11 +127,11 @@ class LoginPage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-              Image.asset(
-                'assets/unnamed.png',
-                height: 50,
-              )
-            ],)
+                Image.asset(
+                  'assets/unnamed.png',
+                  height: 50,
+                )
+              ],)
           ]),
         ),
       ),
