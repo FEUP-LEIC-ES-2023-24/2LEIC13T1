@@ -28,7 +28,9 @@ class LoginPage extends StatelessWidget {
               'Hey! We are Martechplace, You are welcome here!',
               style: GoogleFonts.amaranth(  
                 fontSize: 25,
+
               ),
+              textAlign: TextAlign.center,
             ),
             
             SizedBox(height: 50,),
@@ -78,9 +80,41 @@ class LoginPage extends StatelessWidget {
                 ],
               ),
             ),
+            SizedBox(height: 25,),
             //sign in button
-          
-            // or continue with: google
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 15.0),
+              child: Container(
+                height: 35.0,
+                decoration: BoxDecoration(
+                  color: Colors.black,
+                  borderRadius: BorderRadius.all(Radius.circular(5.0))
+                ),
+                child: Center(child: Text(
+                  "Sign In",
+                  style: GoogleFonts.amaranth(textStyle: TextStyle(fontSize: 20, color: Colors.white)
+                  ),
+                ),),
+              ),
+            ),
+            SizedBox(height: 25.0),
+            // or continue with:
+
+            Text(
+              "Or continue with:",
+              style: GoogleFonts.amaranth(
+                fontSize: 15,
+              ),
+            ),
+            SizedBox(height: 25,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+              Image.asset(
+                '../lib/images/unnamed.png',
+                height: 50,
+              )
+            ],)
           ]),
         ),
       ),
