@@ -39,7 +39,7 @@ Porto's Academic Community.
 ### Domain Model
 
 <p align="center" justify="center">
-  <img src="Docs\Domain.drawio.png"/>
+  <img src="Docs\DomainModel.png"/>
 </p>
 <p align="center">
   <b><i>Domain Model</i></b>
