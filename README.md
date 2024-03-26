@@ -50,7 +50,7 @@ In the domain model, a Web User is identified by their username and password. Ea
 ### Logical Design
 
 <p align="center" justify="center">
-  <img src="Docs/Logical1.drawio.png"/>
+  <img src="Docs\Logical Model.drawio.png"/>
 </p>
 <p align="center">
   <b><i>Logical Architecture</i></b>
@@ -61,7 +61,7 @@ The Marketplace UI communicate with the system Logic, which if needed can access
 ### Physical Design 
 
 <p align="center" justify="center">
-  <img src="Docs/Physical_Diagram.drawio.png"/>
+  <img src="Docs\PhysicalModel.drawio.png"/>
 </p>
 <p align="center">
   <b><i>Physical Architecture</i></b>
