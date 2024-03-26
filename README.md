@@ -45,7 +45,7 @@ Porto's Academic Community.
   <b><i>Domain Model</i></b>
 </p>
 
-In the domain model, a User can have multiples Ads, within this Ads it can have one Category. The Message happens between two Users, and a User can have many Messages.
+In the domain model, a Web User is identified by their username and password. Each Web User is related to a real User, from whom we must know the name and contact information. Users can share messages between themselves and can have Ads. A User can report an Ad if it contains inappropriate content. An Admin is a special User that can check those reports and deal with the situation.
 
 ### Logical Design
 
