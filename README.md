@@ -68,7 +68,7 @@ The Marketplace UI communicate with the system Logic, which if needed can access
 </p>
 
 
-Users can access the app via their cellphones, enabling communication between the app and the server over the internet. The server facilitates data storage and retrieval by interfacing with the database. Additionally, the chat service, integrated into the Marketplace server but not in it, facilitating user-to-user communication.
+Users can access the app via their mobile, enabling communication between the app and the server over the internet. The server facilitates data storage and retrieval by interfacing with the database. Additionally, the chat service, integrated into the Marketplace server but not in it, facilitating user-to-user communication.
 
 ## Dependencies
 
