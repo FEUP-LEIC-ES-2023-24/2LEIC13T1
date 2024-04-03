@@ -1,0 +1,14 @@
+
+*.apk
+*.ap_
+*.class
+*.dex
+*.jar
+*.so
+*.aar
+
+build/
+out/
+
+.idea/
+*.iml
