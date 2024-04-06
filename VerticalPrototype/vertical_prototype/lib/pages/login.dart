@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:vertical_prototype/pages/forgot_password_page.dart';
 import 'package:vertical_prototype/pages/mainpage.dart';
 
 class LoginPage extends StatelessWidget {
@@ -84,11 +85,22 @@ class LoginPage extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
+                  GestureDetector(
+                    onTap: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context){
+                        return ForgotPasswordPage();
+                      },
+                      ),
+                      );
+                    },
+                  ),
                   Text(
                     'Forgot password?',
-                    style: GoogleFonts.amaranth(  
-                      fontSize: 15,
+                    style: TextStyle(
+                      color: Colors.blue,
+                      fontWeight: FontWeight.bold,
                     ),
+
                   ),
                 ],
               ),

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "733292986989",
+    "project_id": "esproject-2b3d3",
+    "storage_bucket": "esproject-2b3d3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:733292986989:android:28ef05a49c190f18edb564",
+        "android_client_info": {
+          "package_name": "com.martech.code"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDuAINJo6pC_S6VkxnYTqJNQTniGJtOiXg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

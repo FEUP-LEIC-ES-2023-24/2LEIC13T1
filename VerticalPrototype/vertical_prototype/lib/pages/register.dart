@@ -45,7 +45,7 @@ class Register extends StatelessWidget {
               ),
               textAlign: TextAlign.center,
             ),
-
+            
             SizedBox(height: 50,),
             //username textfield
             Padding(
