@@ -2,24 +2,13 @@
 
 The L.EIC MarTechPlace project was developed for the Software Engineering course in the 2023/24 academic year of the 2nd year of L.EIC at FEUP.
 
-## Project Description
+## Project Vision
 
-Our product addresses the pressing needs of the academic community by offering affordable electronic devices, crucial tools often required for their coursework. Simultaneously, it aims to meet the growing demand for sustainability in our society. With alarming rates of electronic waste, it is our responsibility to take action through prevention, reduction, recycling, and reuse initiatives.
-
-
-## Vision
-
-Connecting Porto Academic Community through technology reuse for a sustainable future.
+Our project envisions connecting the Porto Academic Community through technology reuse for a sustainable future, addressing pressing needs for affordable electronic devices while promoting sustainability and fostering a culture of solidarity and resourcefulness within the academic community. To achieve this, we aim to facilitate the reuse of electronic devices among students and promote sustainability through prevention, reduction, recycling, and reuse initiatives, thereby promoting a culture of solidarity and resourcefulness.
 
 ## Target Group
 
 Porto's Academic Community.
-
-## General Objectives
-
-- Facilitate the reuse of electronic devices among students.
-- Promote sustainability within the academic community.
-- Promover uma culture of solidarity and resourcefulness.
 
 ## Features
 
@@ -50,7 +39,7 @@ In the domain model, a Web User is identified by their username and password. Ea
 ### Logical Design
 
 <p align="center" justify="center">
-  <img src="Docs\Logical Model.drawio.png"/>
+  <img src="Docs/Logical1.drawio.png"/>
 </p>
 <p align="center">
   <b><i>Logical Architecture</i></b>
@@ -61,14 +50,14 @@ The Marketplace UI communicate with the system Logic, which if needed can access
 ### Physical Design 
 
 <p align="center" justify="center">
-  <img src="Docs\PhysicalModel.drawio.png"/>
+  <img src="Docs/Physical_Diagram.drawio.png"/>
 </p>
 <p align="center">
   <b><i>Physical Architecture</i></b>
 </p>
 
 
-Users can access the app via their mobile, enabling communication between the app and the server over the internet. The server facilitates data storage and retrieval by interfacing with the database. Additionally, the chat service, integrated into the Marketplace server but not in it, facilitating user-to-user communication.
+Users can access the app via their cellphones, enabling communication between the app and the server over the internet. The server facilitates data storage and retrieval by interfacing with the database. Additionally, the chat service, integrated into the Marketplace server but not in it, facilitating user-to-user communication.
 
 ## Dependencies
 
