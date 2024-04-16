@@ -73,8 +73,44 @@ Users can access the app via their cellphones, enabling communication between th
 
 ### Section 1 
 
+## Beginning of Sprint 1
+<p align="center" justify="center">
+  <img src="Docs/initialsprint1.jpg"/>
+</p>
+<p align="center">
+  <b><i>Project Backlog of the Beginning of Sprint 1</i></b>
+</p>
 
 
+## End of Sprint 1
+<p align="center" justify="center">
+  <img src="Docs/finalsprint1.jpg"/>
+</p>
+<p align="center">
+  <b><i>Project Backlog of the End of Sprint 1</i></b>
+</p>
+
+
+As the main difficulties during the sprint, we highlight learning to use the programming tool (FlutterFlow) and creating the pages with the functionalities we described in the user stories, configuring our project with the Firebase API, and creating the tests, which were not working even at the end of the sprint. Our communication channel via WhatsApp was of great help during the sprint, although not all members of the group were as communicative. We are pleased to have most of the pages implemented and functional.
+
+## ChangeLog
+
+- Implementation of [Menu Page](https://github.com/FEUP-LEIC-ES-2023-24/2LEIC13T1/issues/6)
+- Implementation of [Sign In Page](https://github.com/FEUP-LEIC-ES-2023-24/2LEIC13T1/issues/2)
+- Implementation of [Register Page](https://github.com/FEUP-LEIC-ES-2023-24/2LEIC13T1/issues/1) 
+- Implementation of [Recover Password Page](https://github.com/FEUP-LEIC-ES-2023-24/2LEIC13T1/issues/3)
+- Implementation of [Profile Menu Page](https://github.com/FEUP-LEIC-ES-2023-24/2LEIC13T1/issues/7)
+- Implementation of [Create Sales Ad Page](https://github.com/FEUP-LEIC-ES-2023-24/2LEIC13T1/issues/5)
+
+All of the above were implemented using databases and the firebase authentication tool for funcionalities such as Login, Register and Recover Password. Our main difficulty was to implement the unit and acceptance tests, that have not been fully implemented in this Sprint
+
+## Beginning of Sprint 2
+<p align="center" justify="center">
+  <img src="Docs/initialsprint2.png"/>
+</p>
+<p align="center">
+  <b><i>Project Backlog of the Beggining of Sprint 2</i></b>
+</p>
 
 
 
