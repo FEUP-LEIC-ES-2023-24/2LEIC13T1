@@ -1,3 +1,4 @@
+import '/auth/base_auth_user_provider.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -75,7 +76,11 @@ class _CustomNavBarProfileWidgetState extends State<CustomNavBarProfileWidget> {
                   size: 35.0,
                 ),
                 onPressed: () async {
-                  context.pushNamed('Create_new_ad');
+                  if (loggedIn == true) {
+                    context.pushNamed('Create_new_ad');
+                  } else {
+                    context.pushNamed('LoginRegister');
+                  }
                 },
               ),
             ),
@@ -96,7 +101,11 @@ class _CustomNavBarProfileWidgetState extends State<CustomNavBarProfileWidget> {
                   size: 35.0,
                 ),
                 onPressed: () async {
-                  context.pushNamed('LoginRegister');
+                  if (loggedIn) {
+                    context.pushNamed('ProfileMenu');
+                  } else {
+                    context.pushNamed('LoginRegister');
+                  }
                 },
               ),
             ),

@@ -10,12 +10,12 @@ class CreateNewAdModel extends FlutterFlowModel<CreateNewAdWidget> {
   final formKey = GlobalKey<FormState>();
   // State field(s) for task widget.
   FocusNode? taskFocusNode;
-  TextEditingController? taskController;
-  String? Function(BuildContext, String?)? taskControllerValidator;
+  TextEditingController? taskTextController;
+  String? Function(BuildContext, String?)? taskTextControllerValidator;
   // State field(s) for description widget.
   FocusNode? descriptionFocusNode;
-  TextEditingController? descriptionController;
-  String? Function(BuildContext, String?)? descriptionControllerValidator;
+  TextEditingController? descriptionTextController;
+  String? Function(BuildContext, String?)? descriptionTextControllerValidator;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode;
   TextEditingController? textController3;
@@ -28,8 +28,8 @@ class CreateNewAdModel extends FlutterFlowModel<CreateNewAdWidget> {
       choiceChipsValueController?.value = val != null ? [val] : [];
   // State field(s) for location widget.
   FocusNode? locationFocusNode;
-  TextEditingController? locationController;
-  String? Function(BuildContext, String?)? locationControllerValidator;
+  TextEditingController? locationTextController;
+  String? Function(BuildContext, String?)? locationTextControllerValidator;
   bool isDataUploading = false;
   FFUploadedFile uploadedLocalFile =
       FFUploadedFile(bytes: Uint8List.fromList([]));
@@ -42,15 +42,15 @@ class CreateNewAdModel extends FlutterFlowModel<CreateNewAdWidget> {
   void dispose() {
     unfocusNode.dispose();
     taskFocusNode?.dispose();
-    taskController?.dispose();
+    taskTextController?.dispose();
 
     descriptionFocusNode?.dispose();
-    descriptionController?.dispose();
+    descriptionTextController?.dispose();
 
     textFieldFocusNode?.dispose();
     textController3?.dispose();
 
     locationFocusNode?.dispose();
-    locationController?.dispose();
+    locationTextController?.dispose();
   }
 }

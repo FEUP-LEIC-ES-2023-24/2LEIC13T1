@@ -9,6 +9,7 @@ import 'package:martechplace/index.dart';
 import 'package:martechplace/main.dart';
 import 'package:martechplace/flutter_flow/flutter_flow_util.dart';
 
+import 'package:provider/provider.dart';
 import 'package:martechplace/backend/firebase/firebase_config.dart';
 import 'package:martechplace/auth/firebase_auth/auth_util.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -25,33 +26,101 @@ void main() async {
 
   setUp(() async {
     await authManager.signOut();
+    FFAppState.reset();
+    final appState = FFAppState();
+    await appState.initializePersistedState();
   });
 
-  group('Acceptance Tests', () {
-    testWidgets('Reset Password Test', (WidgetTester tester) async {
-      await tester.pumpWidget(MyApp(
-        entryPage: LoginRegisterWidget(),
+  group('SearchWidgetTesting', () {
+    testWidgets('Search Box', (WidgetTester tester) async {
+      await tester.pumpWidget(ChangeNotifierProvider(
+        create: (context) => FFAppState(),
+        child: MyApp(),
       ));
 
-      await tester.tap(find.byKey(ValueKey('UNDEFINED')));
-      await tester.pumpAndSettle(Duration(milliseconds: 3000));
-      await tester.tap(find.byKey(ValueKey('123')));
-      await tester.pumpAndSettle(Duration(milliseconds: 3000));
-      await tester.enterText(
-          find.byKey(ValueKey('EmailTextBox')), 'leonardorsg1@gmail.com');
-      await tester.pumpAndSettle(Duration(milliseconds: 3000));
-      await tester.tap(find.byKey(ValueKey('SendLinkButton')));
+      await tester.pumpAndSettle();
+      expect(find.byKey(ValueKey('searchUsersButton')), findsWidgets);
+      expect(find.byKey(ValueKey('searchProductsButton')), findsWidgets);
+    });
+
+    testWidgets('Search User', (WidgetTester tester) async {
+      await tester.pumpWidget(ChangeNotifierProvider(
+        create: (context) => FFAppState(),
+        child: MyApp(),
+      ));
+
+      await tester.pumpAndSettle();
+      await tester.tap(find.byKey(ValueKey('searchUsersButton')));
+      await tester.pump(kDoubleTapMinTime);
+      await tester.tap(find.byKey(ValueKey('searchUsersButton')));
+      await tester.pumpAndSettle();
+      await tester.enterText(find.byKey(ValueKey('SearchBox')), 'Amanda');
+      await tester.pumpAndSettle();
+      await tester.tap(find.byKey(ValueKey('SearchButton')));
+      await tester.pump(kDoubleTapMinTime);
+      await tester.tap(find.byKey(ValueKey('SearchButton')));
+      await tester.pumpAndSettle();
+      await tester.tap(find.byKey(ValueKey('UserBox')));
+      await tester.pump(kDoubleTapMinTime);
+      await tester.tap(find.byKey(ValueKey('UserBox')));
     });
   });
 
   testWidgets('ProfileMenuTest', (WidgetTester tester) async {
-    await tester.pumpWidget(MyApp());
+    await tester.pumpWidget(ChangeNotifierProvider(
+      create: (context) => FFAppState(),
+      child: MyApp(),
+    ));
 
     await tester.pumpAndSettle(Duration(milliseconds: 3000));
     expect(find.byKey(ValueKey('CircleImage_q875')), findsOneWidget);
     await tester.tap(find.byKey(ValueKey('ChatRow')));
     await tester.pumpAndSettle(Duration(milliseconds: 3000));
     expect(find.text('Forgot Password'), findsOneWidget);
+  });
+
+  testWidgets('HomePage to LoginPage', (WidgetTester tester) async {
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: 'segundomarcel@gmail.com', password: 'Martechplace123');
+    await tester.pumpWidget(ChangeNotifierProvider(
+      create: (context) => FFAppState(),
+      child: MyApp(),
+    ));
+
+    await tester.pumpAndSettle();
+    await tester.tap(find.descendant(
+      of: find.byKey(ValueKey('NavBarHome_fjxx')),
+      matching: find.descendant(
+        of: find.byKey(ValueKey('CustomNavBarHome_4rcq')),
+        matching: find.byKey(ValueKey('ProfileButton')),
+      ),
+    ));
+    await tester.pumpAndSettle();
+    expect(find.text('Sign In'), findsWidgets);
+  });
+
+  testWidgets('HomePage to SearchProducts', (WidgetTester tester) async {
+    await tester.pumpWidget(ChangeNotifierProvider(
+      create: (context) => FFAppState(),
+      child: MyApp(),
+    ));
+
+    await tester.pumpAndSettle();
+    await tester.tap(find.byKey(ValueKey('searchProductsButton')));
+    await tester.pumpAndSettle();
+    expect(find.byKey(ValueKey('searchProductsBox')), findsWidgets);
+  });
+
+  testWidgets('HomePage to SearchUsers', (WidgetTester tester) async {
+    await tester.pumpWidget(ChangeNotifierProvider(
+      create: (context) => FFAppState(),
+      child: MyApp(),
+    ));
+
+    await tester.pumpAndSettle();
+    await tester.tap(find.byKey(ValueKey('searchUsersButton')));
+    await tester.pumpAndSettle();
+    expect(find.byKey(ValueKey('searchUsersBox')), findsWidgets);
   });
 }
 

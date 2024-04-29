@@ -51,8 +51,16 @@ class _AnyCategoryWidgetState extends State<AnyCategoryWidget> {
               color: FlutterFlowTheme.of(context).primaryText,
               size: 35.0,
             ),
-            onPressed: () {
-              print('IconButton pressed ...');
+            onPressed: () async {
+              context.pushNamed(
+                'SearchPage',
+                queryParameters: {
+                  'category': serializeParam(
+                    'Portable',
+                    ParamType.String,
+                  ),
+                }.withoutNulls,
+              );
             },
           ),
           Text(

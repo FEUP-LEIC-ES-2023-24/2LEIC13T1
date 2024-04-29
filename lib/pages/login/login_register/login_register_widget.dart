@@ -27,60 +27,7 @@ class _LoginRegisterWidgetState extends State<LoginRegisterWidget>
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
-  final animationsMap = {
-    'columnOnPageLoadAnimation1': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 300.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 300.ms,
-          begin: const Offset(0.0, 60.0),
-          end: const Offset(0.0, 0.0),
-        ),
-        TiltEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 300.ms,
-          begin: const Offset(-0.349, 0),
-          end: const Offset(0, 0),
-        ),
-      ],
-    ),
-    'columnOnPageLoadAnimation2': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 300.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 300.ms,
-          begin: const Offset(0.0, 60.0),
-          end: const Offset(0.0, 0.0),
-        ),
-        TiltEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 300.ms,
-          begin: const Offset(-0.349, 0),
-          end: const Offset(0, 0),
-        ),
-      ],
-    ),
-  };
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
@@ -92,20 +39,75 @@ class _LoginRegisterWidgetState extends State<LoginRegisterWidget>
       length: 2,
       initialIndex: 0,
     )..addListener(() => setState(() {}));
-    _model.emailAddressController ??= TextEditingController();
+    _model.emailAddressTextController ??= TextEditingController();
     _model.emailAddressFocusNode ??= FocusNode();
 
-    _model.passwordController ??= TextEditingController();
+    _model.passwordTextController ??= TextEditingController();
     _model.passwordFocusNode ??= FocusNode();
 
-    _model.emailAddressCreateController ??= TextEditingController();
+    _model.emailAddressCreateTextController ??= TextEditingController();
     _model.emailAddressCreateFocusNode ??= FocusNode();
 
-    _model.passwordCreateController ??= TextEditingController();
+    _model.passwordCreateTextController ??= TextEditingController();
     _model.passwordCreateFocusNode ??= FocusNode();
 
-    _model.passwordConfirmController ??= TextEditingController();
+    _model.passwordConfirmTextController ??= TextEditingController();
     _model.passwordConfirmFocusNode ??= FocusNode();
+
+    animationsMap.addAll({
+      'columnOnPageLoadAnimation1': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 300.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 300.0.ms,
+            begin: const Offset(0.0, 60.0),
+            end: const Offset(0.0, 0.0),
+          ),
+          TiltEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 300.0.ms,
+            begin: const Offset(-0.349, 0),
+            end: const Offset(0, 0),
+          ),
+        ],
+      ),
+      'columnOnPageLoadAnimation2': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 300.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 300.0.ms,
+            begin: const Offset(0.0, 60.0),
+            end: const Offset(0.0, 0.0),
+          ),
+          TiltEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 300.0.ms,
+            begin: const Offset(-0.349, 0),
+            end: const Offset(0, 0),
+          ),
+        ],
+      ),
+    });
   }
 
   @override
@@ -327,7 +329,7 @@ class _LoginRegisterWidgetState extends State<LoginRegisterWidget>
                                                               child:
                                                                   TextFormField(
                                                                 controller: _model
-                                                                    .emailAddressController,
+                                                                    .emailAddressTextController,
                                                                 focusNode: _model
                                                                     .emailAddressFocusNode,
                                                                 autofocus: true,
@@ -432,7 +434,7 @@ class _LoginRegisterWidgetState extends State<LoginRegisterWidget>
                                                                             context)
                                                                         .primary,
                                                                 validator: _model
-                                                                    .emailAddressControllerValidator
+                                                                    .emailAddressTextControllerValidator
                                                                     .asValidator(
                                                                         context),
                                                               ),
@@ -452,7 +454,7 @@ class _LoginRegisterWidgetState extends State<LoginRegisterWidget>
                                                               child:
                                                                   TextFormField(
                                                                 controller: _model
-                                                                    .passwordController,
+                                                                    .passwordTextController,
                                                                 focusNode: _model
                                                                     .passwordFocusNode,
                                                                 autofocus:
@@ -580,7 +582,7 @@ class _LoginRegisterWidgetState extends State<LoginRegisterWidget>
                                                                             context)
                                                                         .primary,
                                                                 validator: _model
-                                                                    .passwordControllerValidator
+                                                                    .passwordTextControllerValidator
                                                                     .asValidator(
                                                                         context),
                                                               ),
@@ -611,10 +613,10 @@ class _LoginRegisterWidgetState extends State<LoginRegisterWidget>
                                                                           .signInWithEmail(
                                                                     context,
                                                                     _model
-                                                                        .emailAddressController
+                                                                        .emailAddressTextController
                                                                         .text,
                                                                     _model
-                                                                        .passwordController
+                                                                        .passwordTextController
                                                                         .text,
                                                                   );
                                                                   if (user ==
@@ -688,7 +690,7 @@ class _LoginRegisterWidgetState extends State<LoginRegisterWidget>
                                                               child:
                                                                   FFButtonWidget(
                                                                 key: const ValueKey(
-                                                                    '123'),
+                                                                    'ForgotButton'),
                                                                 onPressed:
                                                                     () async {
                                                                   context.pushNamed(
@@ -1101,7 +1103,7 @@ class _LoginRegisterWidgetState extends State<LoginRegisterWidget>
                                                                 child:
                                                                     TextFormField(
                                                                   controller: _model
-                                                                      .emailAddressCreateController,
+                                                                      .emailAddressCreateTextController,
                                                                   focusNode: _model
                                                                       .emailAddressCreateFocusNode,
                                                                   autofocus:
@@ -1203,7 +1205,7 @@ class _LoginRegisterWidgetState extends State<LoginRegisterWidget>
                                                                               context)
                                                                           .primary,
                                                                   validator: _model
-                                                                      .emailAddressCreateControllerValidator
+                                                                      .emailAddressCreateTextControllerValidator
                                                                       .asValidator(
                                                                           context),
                                                                 ),
@@ -1223,7 +1225,7 @@ class _LoginRegisterWidgetState extends State<LoginRegisterWidget>
                                                                 child:
                                                                     TextFormField(
                                                                   controller: _model
-                                                                      .passwordCreateController,
+                                                                      .passwordCreateTextController,
                                                                   focusNode: _model
                                                                       .passwordCreateFocusNode,
                                                                   autofocus:
@@ -1344,7 +1346,7 @@ class _LoginRegisterWidgetState extends State<LoginRegisterWidget>
                                                                               context)
                                                                           .primary,
                                                                   validator: _model
-                                                                      .passwordCreateControllerValidator
+                                                                      .passwordCreateTextControllerValidator
                                                                       .asValidator(
                                                                           context),
                                                                 ),
@@ -1364,7 +1366,7 @@ class _LoginRegisterWidgetState extends State<LoginRegisterWidget>
                                                                 child:
                                                                     TextFormField(
                                                                   controller: _model
-                                                                      .passwordConfirmController,
+                                                                      .passwordConfirmTextController,
                                                                   focusNode: _model
                                                                       .passwordConfirmFocusNode,
                                                                   autofocus:
@@ -1486,7 +1488,7 @@ class _LoginRegisterWidgetState extends State<LoginRegisterWidget>
                                                                               context)
                                                                           .primary,
                                                                   validator: _model
-                                                                      .passwordConfirmControllerValidator
+                                                                      .passwordConfirmTextControllerValidator
                                                                       .asValidator(
                                                                           context),
                                                                 ),
@@ -1512,10 +1514,10 @@ class _LoginRegisterWidgetState extends State<LoginRegisterWidget>
                                                                             context)
                                                                         .prepareAuthEvent();
                                                                     if (_model
-                                                                            .passwordCreateController
+                                                                            .passwordCreateTextController
                                                                             .text !=
                                                                         _model
-                                                                            .passwordConfirmController
+                                                                            .passwordConfirmTextController
                                                                             .text) {
                                                                       ScaffoldMessenger.of(
                                                                               context)
@@ -1535,10 +1537,10 @@ class _LoginRegisterWidgetState extends State<LoginRegisterWidget>
                                                                             .createAccountWithEmail(
                                                                       context,
                                                                       _model
-                                                                          .emailAddressCreateController
+                                                                          .emailAddressCreateTextController
                                                                           .text,
                                                                       _model
-                                                                          .passwordCreateController
+                                                                          .passwordCreateTextController
                                                                           .text,
                                                                     );
                                                                     if (user ==
@@ -1553,10 +1555,12 @@ class _LoginRegisterWidgetState extends State<LoginRegisterWidget>
                                                                         .update(
                                                                             createUsersRecordData(
                                                                           email: _model
-                                                                              .emailAddressCreateController
+                                                                              .emailAddressCreateTextController
                                                                               .text,
                                                                           createdTime:
                                                                               getCurrentTimestamp,
+                                                                          photoUrl:
+                                                                              _model.uploadedFileUrl,
                                                                         ));
 
                                                                     context.goNamedAuth(

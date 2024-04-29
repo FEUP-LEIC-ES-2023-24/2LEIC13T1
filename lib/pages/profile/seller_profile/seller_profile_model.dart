@@ -1,0 +1,23 @@
+import '/components/nav_bar_home_widget.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+import 'seller_profile_widget.dart' show SellerProfileWidget;
+import 'package:flutter/material.dart';
+
+class SellerProfileModel extends FlutterFlowModel<SellerProfileWidget> {
+  ///  State fields for stateful widgets in this page.
+
+  final unfocusNode = FocusNode();
+  // Model for NavBarHome component.
+  late NavBarHomeModel navBarHomeModel;
+
+  @override
+  void initState(BuildContext context) {
+    navBarHomeModel = createModel(context, () => NavBarHomeModel());
+  }
+
+  @override
+  void dispose() {
+    unfocusNode.dispose();
+    navBarHomeModel.dispose();
+  }
+}
