@@ -146,6 +146,15 @@ All of the above were implemented using databases and the firebase authenticatio
   <b><i>Project Backlog of the Beggining of Sprint 2</i></b>
 </p>
 
+## ChangeLog
+Implementation of [Search Products Page](https://github.com/FEUP-LEIC-ES-2023-24/2LEIC13T1/issues/8)
+Implementation of [Edit Ad Page](https://github.com/FEUP-LEIC-ES-2023-24/2LEIC13T1/issues/19)
+Implementation of [Ad Details Page](https://github.com/FEUP-LEIC-ES-2023-24/2LEIC13T1/issues/9)
+Implementation of [FAQ Section Page](https://github.com/FEUP-LEIC-ES-2023-24/2LEIC13T1/issues/4)
+Implementation of [My Ads Page](https://github.com/FEUP-LEIC-ES-2023-24/2LEIC13T1/issues/11)
+Implementation of [Delete Ads Page](https://github.com/FEUP-LEIC-ES-2023-24/2LEIC13T1/issues/20)
+Implementation of [Edit Profile Page](https://github.com/FEUP-LEIC-ES-2023-24/2LEIC13T1/issues/10)
+
 ## End of Sprint 2
 <p align="center" justify="center">
   <img src="Docs/EndOfSprint2.jpeg"/>
