@@ -13,7 +13,8 @@ class SearchPageModel extends FlutterFlowModel<SearchPageWidget> {
   TextEditingController? textController;
   String? textFieldSelectedOption;
   String? Function(BuildContext, String?)? textControllerValidator;
-  List<AdRecord> simpleSearchResults = [];
+  List<AdRecord> simpleSearchResults1 = [];
+  List<AdRecord> simpleSearchResults2 = [];
 
   @override
   void initState(BuildContext context) {}

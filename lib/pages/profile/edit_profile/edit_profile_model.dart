@@ -14,10 +14,6 @@ class EditProfileModel extends FlutterFlowModel<EditProfileWidget> {
   FocusNode? yourNameFocusNode;
   TextEditingController? yourNameTextController;
   String? Function(BuildContext, String?)? yourNameTextControllerValidator;
-  // State field(s) for newPassword widget.
-  FocusNode? newPasswordFocusNode;
-  TextEditingController? newPasswordTextController;
-  String? Function(BuildContext, String?)? newPasswordTextControllerValidator;
 
   @override
   void initState(BuildContext context) {}
@@ -26,8 +22,5 @@ class EditProfileModel extends FlutterFlowModel<EditProfileWidget> {
   void dispose() {
     yourNameFocusNode?.dispose();
     yourNameTextController?.dispose();
-
-    newPasswordFocusNode?.dispose();
-    newPasswordTextController?.dispose();
   }
 }

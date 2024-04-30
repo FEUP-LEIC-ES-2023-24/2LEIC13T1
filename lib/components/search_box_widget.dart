@@ -44,13 +44,13 @@ class _SearchBoxWidgetState extends State<SearchBoxWidget> {
             Padding(
               padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 12.0, 0.0),
               child: FFButtonWidget(
-                key: const ValueKey('searchUsersButton'),
+                key: const ValueKey('usersButton'),
                 onPressed: () async {
                   context.pushNamed('SearchUser');
                 },
                 text: 'Search Users',
                 icon: const Icon(
-                  key: ValueKey('searchUsersButton'),
+                  key: ValueKey('usersButton'),
                   Icons.person,
                   size: 15.0,
                 ),

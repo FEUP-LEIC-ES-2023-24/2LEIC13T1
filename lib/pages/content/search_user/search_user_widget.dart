@@ -216,7 +216,6 @@ class _SearchUserWidgetState extends State<SearchUserWidget> {
                                       _model.textController =
                                           textEditingController;
                                       return TextFormField(
-                                        key: const ValueKey('SearchBox'),
                                         key: _model.textFieldKey,
                                         controller: textEditingController,
                                         focusNode: focusNode,

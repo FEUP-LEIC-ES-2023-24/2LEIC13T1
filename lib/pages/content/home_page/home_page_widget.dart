@@ -193,7 +193,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                   'SearchPage',
                                                   queryParameters: {
                                                     'category': serializeParam(
-                                                      'Portables',
+                                                      'Portable',
                                                       ParamType.String,
                                                     ),
                                                   }.withoutNulls,
@@ -229,7 +229,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                         queryParameters: {
                                                           'category':
                                                               serializeParam(
-                                                            'mobile',
+                                                            'Mobile',
                                                             ParamType.String,
                                                           ),
                                                         }.withoutNulls,

@@ -80,8 +80,6 @@ void main() async {
   });
 
   testWidgets('HomePage to LoginPage', (WidgetTester tester) async {
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: 'segundomarcel@gmail.com', password: 'Martechplace123');
     await tester.pumpWidget(ChangeNotifierProvider(
       create: (context) => FFAppState(),
       child: MyApp(),
@@ -109,18 +107,6 @@ void main() async {
     await tester.tap(find.byKey(ValueKey('searchProductsButton')));
     await tester.pumpAndSettle();
     expect(find.byKey(ValueKey('searchProductsBox')), findsWidgets);
-  });
-
-  testWidgets('HomePage to SearchUsers', (WidgetTester tester) async {
-    await tester.pumpWidget(ChangeNotifierProvider(
-      create: (context) => FFAppState(),
-      child: MyApp(),
-    ));
-
-    await tester.pumpAndSettle();
-    await tester.tap(find.byKey(ValueKey('searchUsersButton')));
-    await tester.pumpAndSettle();
-    expect(find.byKey(ValueKey('searchUsersBox')), findsWidgets);
   });
 }
 

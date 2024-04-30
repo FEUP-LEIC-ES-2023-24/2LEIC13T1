@@ -12,7 +12,7 @@ class AdContentWidget extends StatefulWidget {
   const AdContentWidget({
     super.key,
     required this.id,
-    required this.adDoc,
+    this.adDoc,
   });
 
   final String? id;
@@ -366,8 +366,7 @@ class _AdContentWidgetState extends State<AdContentWidget> {
                                                   'DeleteAd',
                                                   queryParameters: {
                                                     'id': serializeParam(
-                                                      adContentAdRecord
-                                                          .reference.id,
+                                                      adContentAdRecord.aid,
                                                       ParamType.String,
                                                     ),
                                                   }.withoutNulls,

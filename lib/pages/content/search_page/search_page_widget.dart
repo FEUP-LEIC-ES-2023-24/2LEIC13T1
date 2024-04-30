@@ -232,7 +232,7 @@ class _SearchPageWidgetState extends State<SearchPageWidget> {
                                             await queryAdRecordOnce()
                                                 .then(
                                                   (records) => _model
-                                                          .simpleSearchResults =
+                                                          .simpleSearchResults1 =
                                                       TextSearch(
                                                     records
                                                         .map(
@@ -252,7 +252,7 @@ class _SearchPageWidgetState extends State<SearchPageWidget> {
                                                           .toList(),
                                                 )
                                                 .onError((_, __) => _model
-                                                    .simpleSearchResults = [])
+                                                    .simpleSearchResults1 = [])
                                                 .whenComplete(
                                                     () => setState(() {}));
 
@@ -306,12 +306,42 @@ class _SearchPageWidgetState extends State<SearchPageWidget> {
                                   alignment: const AlignmentDirectional(0.94, -0.07),
                                   child: FFButtonWidget(
                                     onPressed: () async {
-                                      setState(() {
-                                        _model.textController?.clear();
-                                      });
-                                      setState(() {
-                                        FFAppState().searchActive = false;
-                                      });
+                                      if (_model.textController.text != '') {
+                                        await queryAdRecordOnce()
+                                            .then(
+                                              (records) =>
+                                                  _model.simpleSearchResults2 =
+                                                      TextSearch(
+                                                records
+                                                    .map(
+                                                      (record) => TextSearchItem
+                                                          .fromTerms(record,
+                                                              [record.name]),
+                                                    )
+                                                    .toList(),
+                                              )
+                                                          .search(_model
+                                                              .textController
+                                                              .text)
+                                                          .map((r) => r.object)
+                                                          .toList(),
+                                            )
+                                            .onError((_, __) => _model
+                                                .simpleSearchResults2 = [])
+                                            .whenComplete(
+                                                () => setState(() {}));
+
+                                        setState(() {
+                                          FFAppState().searchActive = true;
+                                        });
+                                      } else {
+                                        setState(() {
+                                          _model.textController?.clear();
+                                        });
+                                        setState(() {
+                                          FFAppState().searchActive = false;
+                                        });
+                                      }
                                     },
                                     text: '',
                                     icon: const Icon(
@@ -365,7 +395,7 @@ class _SearchPageWidgetState extends State<SearchPageWidget> {
                                     ),
                               ),
                               Text(
-                                _model.simpleSearchResults.length.toString(),
+                                _model.simpleSearchResults1.length.toString(),
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
@@ -693,7 +723,7 @@ class _SearchPageWidgetState extends State<SearchPageWidget> {
                             child: Builder(
                               builder: (context) {
                                 final adsSearch =
-                                    _model.simpleSearchResults.toList();
+                                    _model.simpleSearchResults1.toList();
                                 return ListView.builder(
                                   padding: EdgeInsets.zero,
                                   shrinkWrap: true,

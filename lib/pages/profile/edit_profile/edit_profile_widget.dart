@@ -1,4 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -27,9 +28,6 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
 
     _model.yourNameTextController ??= TextEditingController();
     _model.yourNameFocusNode ??= FocusNode();
-
-    _model.newPasswordTextController ??= TextEditingController();
-    _model.newPasswordFocusNode ??= FocusNode();
   }
 
   @override
@@ -215,7 +213,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                       textCapitalization: TextCapitalization.words,
                       obscureText: false,
                       decoration: InputDecoration(
-                        labelText: 'Your Name',
+                        labelText: 'Your New Username',
                         labelStyle:
                             FlutterFlowTheme.of(context).labelMedium.override(
                                   fontFamily: 'Readex Pro',
@@ -268,76 +266,19 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                           .asValidator(context),
                     ),
                   ),
-                  Padding(
-                    padding:
-                        const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 16.0),
-                    child: TextFormField(
-                      controller: _model.newPasswordTextController,
-                      focusNode: _model.newPasswordFocusNode,
-                      textCapitalization: TextCapitalization.words,
-                      obscureText: false,
-                      decoration: InputDecoration(
-                        labelText: 'Password',
-                        labelStyle:
-                            FlutterFlowTheme.of(context).labelMedium.override(
-                                  fontFamily: 'Readex Pro',
-                                  letterSpacing: 0.0,
-                                ),
-                        hintStyle:
-                            FlutterFlowTheme.of(context).labelMedium.override(
-                                  fontFamily: 'Readex Pro',
-                                  letterSpacing: 0.0,
-                                ),
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: FlutterFlowTheme.of(context).alternate,
-                            width: 2.0,
-                          ),
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: FlutterFlowTheme.of(context).primary,
-                            width: 2.0,
-                          ),
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                        errorBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: FlutterFlowTheme.of(context).error,
-                            width: 2.0,
-                          ),
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                        focusedErrorBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: FlutterFlowTheme.of(context).error,
-                            width: 2.0,
-                          ),
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                        filled: true,
-                        fillColor:
-                            FlutterFlowTheme.of(context).secondaryBackground,
-                        contentPadding: const EdgeInsetsDirectional.fromSTEB(
-                            20.0, 24.0, 0.0, 24.0),
-                      ),
-                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Readex Pro',
-                            letterSpacing: 0.0,
-                          ),
-                      validator: _model.newPasswordTextControllerValidator
-                          .asValidator(context),
-                    ),
-                  ),
                   Align(
                     alignment: const AlignmentDirectional(0.0, 0.05),
                     child: Padding(
                       padding:
                           const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
                       child: FFButtonWidget(
-                        onPressed: () {
-                          print('Button pressed ...');
+                        onPressed: () async {
+                          await currentUserReference!
+                              .update(createUsersRecordData(
+                            displayName: _model.yourNameTextController.text,
+                          ));
+
+                          context.pushNamed('ProfileMenu');
                         },
                         text: 'Save Changes',
                         options: FFButtonOptions(
@@ -347,11 +288,11 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                               0.0, 0.0, 0.0, 0.0),
                           iconPadding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
-                          color: FlutterFlowTheme.of(context).primary,
+                          color: const Color(0xFFB4E0F8),
                           textStyle:
                               FlutterFlowTheme.of(context).titleMedium.override(
                                     fontFamily: 'Readex Pro',
-                                    color: Colors.white,
+                                    color: const Color(0xFF006BAF),
                                     letterSpacing: 0.0,
                                   ),
                           elevation: 2.0,

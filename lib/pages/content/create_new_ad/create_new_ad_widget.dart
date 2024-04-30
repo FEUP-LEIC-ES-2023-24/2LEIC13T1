@@ -390,7 +390,7 @@ class _CreateNewAdWidgetState extends State<CreateNewAdWidget> {
                               FlutterFlowChoiceChips(
                                 options: const [
                                   ChipData('Portable'),
-                                  ChipData('Mobile '),
+                                  ChipData('Mobile'),
                                   ChipData('Components'),
                                   ChipData('Peripherals'),
                                   ChipData('Gaming')

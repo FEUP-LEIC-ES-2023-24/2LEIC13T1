@@ -1,5 +1,4 @@
 import '/backend/backend.dart';
-import '/components/ad_deleted_successfully_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -42,6 +41,10 @@ class _DeleteAdWidgetState extends State<DeleteAdWidget> {
   Widget build(BuildContext context) {
     return StreamBuilder<List<AdRecord>>(
       stream: queryAdRecord(
+        queryBuilder: (adRecord) => adRecord.where(
+          'aid',
+          isEqualTo: widget.id,
+        ),
         singleRecord: true,
       ),
       builder: (context, snapshot) {
@@ -127,7 +130,7 @@ class _DeleteAdWidgetState extends State<DeleteAdWidget> {
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Text(
-                            'Are you sure you want ti delete this ad?\nOnce you do it will be impossible to retrieve it.',
+                            'Are you sure you want to delete this ad?\nOnce you do it will be impossible to retrieve it.',
                             textAlign: TextAlign.center,
                             style:
                                 FlutterFlowTheme.of(context).bodyLarge.override(
@@ -147,35 +150,9 @@ class _DeleteAdWidgetState extends State<DeleteAdWidget> {
                                 padding: const EdgeInsets.all(10.0),
                                 child: FFButtonWidget(
                                   onPressed: () async {
+                                    context.pushNamed('MyAds');
+
                                     await deleteAdAdRecord!.reference.delete();
-                                    await showModalBottomSheet(
-                                      isScrollControlled: true,
-                                      backgroundColor: Colors.transparent,
-                                      enableDrag: false,
-                                      context: context,
-                                      builder: (context) {
-                                        return GestureDetector(
-                                          onTap: () => _model
-                                                  .unfocusNode.canRequestFocus
-                                              ? FocusScope.of(context)
-                                                  .requestFocus(
-                                                      _model.unfocusNode)
-                                              : FocusScope.of(context)
-                                                  .unfocus(),
-                                          child: Padding(
-                                            padding: MediaQuery.viewInsetsOf(
-                                                context),
-                                            child: SizedBox(
-                                              height: MediaQuery.sizeOf(context)
-                                                      .height *
-                                                  0.35,
-                                              child:
-                                                  const AdDeletedSuccessfullyWidget(),
-                                            ),
-                                          ),
-                                        );
-                                      },
-                                    ).then((value) => safeSetState(() {}));
                                   },
                                   text: 'Delete',
                                   options: FFButtonOptions(
