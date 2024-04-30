@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
 import '/components/ad_created_successfully_widget.dart';
@@ -7,6 +8,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/upload_data.dart';
+import '/flutter_flow/random_data_util.dart' as random_data;
 import 'package:flutter/material.dart';
 import 'create_new_ad_model.dart';
 export 'create_new_ad_model.dart';
@@ -28,16 +30,16 @@ class _CreateNewAdWidgetState extends State<CreateNewAdWidget> {
     super.initState();
     _model = createModel(context, () => CreateNewAdModel());
 
-    _model.taskController ??= TextEditingController();
+    _model.taskTextController ??= TextEditingController();
     _model.taskFocusNode ??= FocusNode();
 
-    _model.descriptionController ??= TextEditingController();
+    _model.descriptionTextController ??= TextEditingController();
     _model.descriptionFocusNode ??= FocusNode();
 
     _model.textController3 ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
 
-    _model.locationController ??= TextEditingController();
+    _model.locationTextController ??= TextEditingController();
     _model.locationFocusNode ??= FocusNode();
   }
 
@@ -154,7 +156,7 @@ class _CreateNewAdWidgetState extends State<CreateNewAdWidget> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               TextFormField(
-                                controller: _model.taskController,
+                                controller: _model.taskTextController,
                                 focusNode: _model.taskFocusNode,
                                 autofocus: false,
                                 textCapitalization: TextCapitalization.words,
@@ -229,11 +231,11 @@ class _CreateNewAdWidgetState extends State<CreateNewAdWidget> {
                                     ),
                                 cursorColor:
                                     FlutterFlowTheme.of(context).primary,
-                                validator: _model.taskControllerValidator
+                                validator: _model.taskTextControllerValidator
                                     .asValidator(context),
                               ),
                               TextFormField(
-                                controller: _model.descriptionController,
+                                controller: _model.descriptionTextController,
                                 focusNode: _model.descriptionFocusNode,
                                 autofocus: false,
                                 textCapitalization: TextCapitalization.words,
@@ -309,7 +311,8 @@ class _CreateNewAdWidgetState extends State<CreateNewAdWidget> {
                                 minLines: 5,
                                 cursorColor:
                                     FlutterFlowTheme.of(context).primary,
-                                validator: _model.descriptionControllerValidator
+                                validator: _model
+                                    .descriptionTextControllerValidator
                                     .asValidator(context),
                               ),
                               TextFormField(
@@ -387,9 +390,10 @@ class _CreateNewAdWidgetState extends State<CreateNewAdWidget> {
                               FlutterFlowChoiceChips(
                                 options: const [
                                   ChipData('Portable'),
-                                  ChipData('Mobile '),
+                                  ChipData('Mobile'),
                                   ChipData('Components'),
-                                  ChipData('Peripherals')
+                                  ChipData('Peripherals'),
+                                  ChipData('Gaming')
                                 ],
                                 onChanged: (val) => setState(() =>
                                     _model.choiceChipsValue = val?.firstOrNull),
@@ -456,7 +460,7 @@ class _CreateNewAdWidgetState extends State<CreateNewAdWidget> {
                                     ),
                               ),
                               TextFormField(
-                                controller: _model.locationController,
+                                controller: _model.locationTextController,
                                 focusNode: _model.locationFocusNode,
                                 autofocus: false,
                                 textCapitalization: TextCapitalization.words,
@@ -533,7 +537,8 @@ class _CreateNewAdWidgetState extends State<CreateNewAdWidget> {
                                     ),
                                 cursorColor:
                                     FlutterFlowTheme.of(context).primary,
-                                validator: _model.locationControllerValidator
+                                validator: _model
+                                    .locationTextControllerValidator
                                     .asValidator(context),
                               ),
                             ]
@@ -638,7 +643,10 @@ class _CreateNewAdWidgetState extends State<CreateNewAdWidget> {
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(8.0),
                                 child: Image.network(
-                                  _model.uploadedFileUrl,
+                                  valueOrDefault<String>(
+                                    _model.uploadedFileUrl,
+                                    '/images/0N36CjPhYGtXC1h0DCDi',
+                                  ),
                                   width: 100.0,
                                   height: 100.0,
                                   fit: BoxFit.cover,
@@ -662,17 +670,25 @@ class _CreateNewAdWidgetState extends State<CreateNewAdWidget> {
                     child: FFButtonWidget(
                       onPressed: () async {
                         await AdRecord.collection.doc().set(createAdRecordData(
-                              aid: '',
-                              name: _model.taskController.text,
+                              aid: random_data.randomString(
+                                5,
+                                15,
+                                true,
+                                false,
+                                false,
+                              ),
+                              name: _model.taskTextController.text,
                               category: _model.choiceChipsValue,
-                              description: _model.descriptionController.text,
+                              description:
+                                  _model.descriptionTextController.text,
                               price:
                                   double.tryParse(_model.textController3.text),
-                              location: _model.locationController.text,
+                              location: _model.locationTextController.text,
                               image1: _model.uploadedFileUrl,
+                              sellerId: currentUserUid,
                             ));
                         setState(() {
-                          _model.taskController?.clear();
+                          _model.taskTextController?.clear();
                         });
                         await showModalBottomSheet(
                           isScrollControlled: true,

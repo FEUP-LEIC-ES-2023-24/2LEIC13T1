@@ -75,7 +75,11 @@ class _CustomNavBarHomeWidgetState extends State<CustomNavBarHomeWidget> {
                   size: 35.0,
                 ),
                 onPressed: () async {
-                  context.pushNamed('Create_new_ad');
+                  if (loggedIn == true) {
+                    context.pushNamed('Create_new_ad');
+                  } else {
+                    context.pushNamed('LoginRegister');
+                  }
                 },
               ),
             ),
@@ -85,10 +89,12 @@ class _CustomNavBarHomeWidgetState extends State<CustomNavBarHomeWidget> {
             child: Padding(
               padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
               child: FlutterFlowIconButton(
+                key: const ValueKey('ProfileButton'),
                 borderRadius: 20.0,
                 borderWidth: 1.0,
                 buttonSize: 55.0,
                 icon: Icon(
+                  key: const ValueKey('ProfileButton'),
                   Icons.person_outlined,
                   color: FlutterFlowTheme.of(context).primaryText,
                   size: 35.0,

@@ -112,6 +112,82 @@ GoRouter createRouter(AppStateNotifier appStateNotifier, [Widget? entryPage]) =>
           name: 'FAQTESTE',
           path: '/faqteste',
           builder: (context, params) => const FaqtesteWidget(),
+        ),
+        FFRoute(
+          name: 'SellerProfile',
+          path: '/sellerProfile',
+          builder: (context, params) => SellerProfileWidget(
+            sellerId: params.getParam(
+              'sellerId',
+              ParamType.String,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'ad_content',
+          path: '/adContent',
+          builder: (context, params) => AdContentWidget(
+            id: params.getParam(
+              'id',
+              ParamType.String,
+            ),
+            adDoc: params.getParam(
+              'adDoc',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['ad'],
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'EditAd',
+          path: '/editAd',
+          builder: (context, params) => EditAdWidget(
+            aid: params.getParam(
+              'aid',
+              ParamType.String,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'SearchPage',
+          path: '/searchPage',
+          builder: (context, params) => SearchPageWidget(
+            category: params.getParam(
+              'category',
+              ParamType.String,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'SearchUser',
+          path: '/searchUser',
+          builder: (context, params) => const SearchUserWidget(),
+        ),
+        FFRoute(
+          name: 'EditProfile',
+          path: '/editProfile',
+          builder: (context, params) => const EditProfileWidget(),
+        ),
+        FFRoute(
+          name: 'faqPage',
+          path: '/faqPage',
+          builder: (context, params) => const FaqPageWidget(),
+        ),
+        FFRoute(
+          name: 'MyAds',
+          path: '/myAds',
+          builder: (context, params) => const MyAdsWidget(),
+        ),
+        FFRoute(
+          name: 'DeleteAd',
+          path: '/deleteAd',
+          builder: (context, params) => DeleteAdWidget(
+            id: params.getParam(
+              'id',
+              ParamType.String,
+            ),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -188,7 +264,7 @@ extension _GoRouterStateExtensions on GoRouterState {
       extra != null ? extra as Map<String, dynamic> : {};
   Map<String, dynamic> get allParams => <String, dynamic>{}
     ..addAll(pathParameters)
-    ..addAll(queryParameters)
+    ..addAll(uri.queryParameters)
     ..addAll(extraMap);
   TransitionInfo get transitionInfo => extraMap.containsKey(kTransitionInfoKey)
       ? extraMap[kTransitionInfoKey] as TransitionInfo
@@ -207,7 +283,7 @@ class FFParameters {
   // present is the special extra parameter reserved for the transition info.
   bool get isEmpty =>
       state.allParams.isEmpty ||
-      (state.extraMap.length == 1 &&
+      (state.allParams.length == 1 &&
           state.extraMap.containsKey(kTransitionInfoKey));
   bool isAsyncParam(MapEntry<String, dynamic> param) =>
       asyncParams.containsKey(param.key) && param.value is String;
@@ -228,10 +304,10 @@ class FFParameters {
 
   dynamic getParam<T>(
     String paramName,
-    ParamType type, [
+    ParamType type, {
     bool isList = false,
     List<String>? collectionNamePath,
-  ]) {
+  }) {
     if (futureParamValues.containsKey(paramName)) {
       return futureParamValues[paramName];
     }
@@ -281,7 +357,7 @@ class FFRoute {
           }
 
           if (requireAuth && !appStateNotifier.loggedIn) {
-            appStateNotifier.setRedirectLocationIfUnset(state.location);
+            appStateNotifier.setRedirectLocationIfUnset(state.uri.toString());
             return '/homePage';
           }
           return null;
@@ -360,7 +436,7 @@ class RootPageContext {
   static bool isInactiveRootPage(BuildContext context) {
     final rootPageContext = context.read<RootPageContext?>();
     final isRootPage = rootPageContext?.isRootPage ?? false;
-    final location = GoRouter.of(context).location;
+    final location = GoRouterState.of(context).uri.toString();
     return isRootPage &&
         location != '/' &&
         location != rootPageContext?.errorRoute;

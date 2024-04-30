@@ -26,28 +26,30 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget>
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
-  final animationsMap = {
-    'buttonOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        ScaleEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          begin: const Offset(1.0, 1.0),
-          end: const Offset(1.0, 1.0),
-        ),
-      ],
-    ),
-  };
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => ForgotPasswordModel());
 
-    _model.emailAddressController ??= TextEditingController();
+    _model.emailAddressTextController ??= TextEditingController();
     _model.emailAddressFocusNode ??= FocusNode();
+
+    animationsMap.addAll({
+      'buttonOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          ScaleEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            begin: const Offset(1.0, 1.0),
+            end: const Offset(1.0, 1.0),
+          ),
+        ],
+      ),
+    });
   }
 
   @override
@@ -170,7 +172,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget>
                 ),
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 4.0, 16.0, 4.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 4.0, 16.0, 16.0),
                 child: Text(
                   'We will send you an email with a link to reset your password, please enter the email associated with your account below.',
                   style: FlutterFlowTheme.of(context).labelMedium.override(
@@ -188,7 +190,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget>
                   width: double.infinity,
                   child: TextFormField(
                     key: const ValueKey('EmailTextBox'),
-                    controller: _model.emailAddressController,
+                    controller: _model.emailAddressTextController,
                     focusNode: _model.emailAddressFocusNode,
                     autofillHints: const [AutofillHints.email],
                     obscureText: false,
@@ -254,7 +256,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget>
                     maxLines: null,
                     keyboardType: TextInputType.emailAddress,
                     cursorColor: const Color(0xFF6F61EF),
-                    validator: _model.emailAddressControllerValidator
+                    validator: _model.emailAddressTextControllerValidator
                         .asValidator(context),
                   ),
                 ),
@@ -279,7 +281,8 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget>
                                     )
                                     .toList(),
                               )
-                                  .search(_model.emailAddressController.text)
+                                  .search(
+                                      _model.emailAddressTextController.text)
                                   .map((r) => r.object)
                                   .toList(),
                             )
@@ -287,7 +290,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget>
                             .whenComplete(() => setState(() {}));
 
                         if ((_model.simpleSearchResults.isNotEmpty) == true) {
-                          if (_model.emailAddressController.text.isEmpty) {
+                          if (_model.emailAddressTextController.text.isEmpty) {
                             ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(
                                 content: Text(
@@ -298,7 +301,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget>
                             return;
                           }
                           await authManager.resetPassword(
-                            email: _model.emailAddressController.text,
+                            email: _model.emailAddressTextController.text,
                             context: context,
                           );
                           await showDialog(

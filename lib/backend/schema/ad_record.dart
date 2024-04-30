@@ -16,11 +16,6 @@ class AdRecord extends FirestoreRecord {
     _initializeFields();
   }
 
-  // "aid" field.
-  String? _aid;
-  String get aid => _aid ?? '';
-  bool hasAid() => _aid != null;
-
   // "name" field.
   String? _name;
   String get name => _name ?? '';
@@ -51,14 +46,25 @@ class AdRecord extends FirestoreRecord {
   String get image1 => _image1 ?? '';
   bool hasImage1() => _image1 != null;
 
+  // "seller_id" field.
+  String? _sellerId;
+  String get sellerId => _sellerId ?? '';
+  bool hasSellerId() => _sellerId != null;
+
+  // "aid" field.
+  String? _aid;
+  String get aid => _aid ?? '';
+  bool hasAid() => _aid != null;
+
   void _initializeFields() {
-    _aid = snapshotData['aid'] as String?;
     _name = snapshotData['name'] as String?;
     _category = snapshotData['category'] as String?;
     _description = snapshotData['description'] as String?;
     _price = castToType<double>(snapshotData['price']);
     _location = snapshotData['location'] as String?;
     _image1 = snapshotData['image1'] as String?;
+    _sellerId = snapshotData['seller_id'] as String?;
+    _aid = snapshotData['aid'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -95,23 +101,25 @@ class AdRecord extends FirestoreRecord {
 }
 
 Map<String, dynamic> createAdRecordData({
-  String? aid,
   String? name,
   String? category,
   String? description,
   double? price,
   String? location,
   String? image1,
+  String? sellerId,
+  String? aid,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
-      'aid': aid,
       'name': name,
       'category': category,
       'description': description,
       'price': price,
       'location': location,
       'image1': image1,
+      'seller_id': sellerId,
+      'aid': aid,
     }.withoutNulls,
   );
 
@@ -123,24 +131,26 @@ class AdRecordDocumentEquality implements Equality<AdRecord> {
 
   @override
   bool equals(AdRecord? e1, AdRecord? e2) {
-    return e1?.aid == e2?.aid &&
-        e1?.name == e2?.name &&
+    return e1?.name == e2?.name &&
         e1?.category == e2?.category &&
         e1?.description == e2?.description &&
         e1?.price == e2?.price &&
         e1?.location == e2?.location &&
-        e1?.image1 == e2?.image1;
+        e1?.image1 == e2?.image1 &&
+        e1?.sellerId == e2?.sellerId &&
+        e1?.aid == e2?.aid;
   }
 
   @override
   int hash(AdRecord? e) => const ListEquality().hash([
-        e?.aid,
         e?.name,
         e?.category,
         e?.description,
         e?.price,
         e?.location,
-        e?.image1
+        e?.image1,
+        e?.sellerId,
+        e?.aid
       ]);
 
   @override
