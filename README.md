@@ -157,7 +157,7 @@ All of the above were implemented using databases and the firebase authenticatio
 
 ## End of Sprint 2
 <p align="center" justify="center">
-  <img src="Docs/EndOfSprint2.jpeg"/>
+  <img src="Docs/endsprint2.png"/>
 </p>
 <p align="center">
   <b><i>Project Backlog of the End of Sprint 2</i></b>
