@@ -128,6 +128,52 @@ void main() async {
     await tester.pumpAndSettle();
     expect(find.byKey(ValueKey('adsColumn')), findsWidgets);
   });
+  testWidgets('Profile menu to Edit Profile', (WidgetTester tester) async {
+    _overrideOnError();
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: 'marcelmedeiros2@sapo.pt', password: 'Martechplace123');
+    await tester.pumpWidget(ChangeNotifierProvider(
+      create: (context) => FFAppState(),
+      child: MyApp(),
+    ));
+
+    await tester.pumpAndSettle();
+    await tester.tap(find.byKey(ValueKey('editProfileLink')));
+    await tester.pumpAndSettle();
+    expect(find.byKey(ValueKey('usernameEditBox')), findsOneWidget);
+  });
+
+  testWidgets('Login to Forgot Password', (WidgetTester tester) async {
+    _overrideOnError();
+    await tester.pumpWidget(ChangeNotifierProvider(
+      create: (context) => FFAppState(),
+      child: MyApp(
+        entryPage: LoginRegisterWidget(),
+      ),
+    ));
+
+    await tester.pumpAndSettle();
+    await tester.tap(find.byKey(ValueKey('ProfileButton')));
+    await tester.pumpAndSettle();
+    await tester.tap(find.byKey(ValueKey('forgotPassword')));
+    await tester.pumpAndSettle();
+    expect(find.byKey(ValueKey('emailForgotBox')), findsOneWidget);
+  });
+
+  testWidgets('Profile Menu to FAQ page', (WidgetTester tester) async {
+    _overrideOnError();
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: 'marcelmedeiros2@sapo.pt', password: 'Martechplace123');
+    await tester.pumpWidget(ChangeNotifierProvider(
+      create: (context) => FFAppState(),
+      child: MyApp(),
+    ));
+
+    await tester.pumpAndSettle();
+    await tester.tap(find.byKey(ValueKey('faqLink')));
+    await tester.pumpAndSettle();
+    expect(find.text('What is Martech?'), findsOneWidget);
+  });
 }
 
 // There are certain types of errors that can happen during tests but
