@@ -246,7 +246,13 @@ class _ReportsWidgetState extends State<ReportsWidget> {
                                                                         8.0,
                                                                         0.0),
                                                             child: AutoSizeText(
-                                                              'Subtext',
+                                                              rowAdRecord
+                                                                  .reportReason
+                                                                  .maybeHandleOverflow(
+                                                                maxChars: 70,
+                                                                replacement:
+                                                                    '…',
+                                                              ),
                                                               textAlign:
                                                                   TextAlign
                                                                       .start,
