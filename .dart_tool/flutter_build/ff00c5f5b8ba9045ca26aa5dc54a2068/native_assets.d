@@ -1,0 +1,1 @@
+ C:\\Users\\leona\\Documents\\FEUP\\2023-2024.2\\ES\\projeto\\main\\.dart_tool\\flutter_build\\ff00c5f5b8ba9045ca26aa5dc54a2068\\native_assets.yaml: 
