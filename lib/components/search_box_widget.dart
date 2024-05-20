@@ -50,7 +50,6 @@ class _SearchBoxWidgetState extends State<SearchBoxWidget> {
                 },
                 text: 'Search Users',
                 icon: const Icon(
-                  key: ValueKey('usersButton'),
                   Icons.person,
                   size: 15.0,
                 ),
@@ -92,7 +91,6 @@ class _SearchBoxWidgetState extends State<SearchBoxWidget> {
               },
               text: 'Search Products',
               icon: const Icon(
-                key: ValueKey('searchProductsButton'),
                 Icons.search,
                 size: 15.0,
               ),
