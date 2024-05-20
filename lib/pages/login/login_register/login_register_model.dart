@@ -26,6 +26,11 @@ class LoginRegisterModel extends FlutterFlowModel<LoginRegisterWidget> {
       FFUploadedFile(bytes: Uint8List.fromList([]));
   String uploadedFileUrl = '';
 
+  // State field(s) for Username_Create widget.
+  FocusNode? usernameCreateFocusNode;
+  TextEditingController? usernameCreateTextController;
+  String? Function(BuildContext, String?)?
+      usernameCreateTextControllerValidator;
   // State field(s) for emailAddress_Create widget.
   FocusNode? emailAddressCreateFocusNode;
   TextEditingController? emailAddressCreateTextController;
@@ -64,6 +69,9 @@ class LoginRegisterModel extends FlutterFlowModel<LoginRegisterWidget> {
 
     passwordFocusNode?.dispose();
     passwordTextController?.dispose();
+
+    usernameCreateFocusNode?.dispose();
+    usernameCreateTextController?.dispose();
 
     emailAddressCreateFocusNode?.dispose();
     emailAddressCreateTextController?.dispose();

@@ -1,5 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
-import '/components/email_sent_dialog_copy_widget.dart';
+import '/components/logout_sucess_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
@@ -102,7 +102,6 @@ class _ProfileMenuWidgetState extends State<ProfileMenuWidget> {
                             alignment: const AlignmentDirectional(0.0, 0.0),
                             child: AuthUserStreamWidget(
                               builder: (context) => Container(
-                                key: const ValueKey('CircleImage_q875'),
                                 width: 120.0,
                                 height: 120.0,
                                 clipBehavior: Clip.antiAlias,
@@ -110,7 +109,6 @@ class _ProfileMenuWidgetState extends State<ProfileMenuWidget> {
                                   shape: BoxShape.circle,
                                 ),
                                 child: Image.network(
-                                  key: const ValueKey('CircleImage_q875'),
                                   valueOrDefault<String>(
                                     currentUserPhoto != ''
                                         ? currentUserPhoto
@@ -156,9 +154,10 @@ class _ProfileMenuWidgetState extends State<ProfileMenuWidget> {
                             hoverColor: Colors.transparent,
                             highlightColor: Colors.transparent,
                             onTap: () async {
-                              context.pushNamed('HomePage');
+                              context.pushNamed('ChatMenu');
                             },
                             child: Row(
+                              key: const ValueKey('chatsLink'),
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Align(
@@ -219,84 +218,10 @@ class _ProfileMenuWidgetState extends State<ProfileMenuWidget> {
                             hoverColor: Colors.transparent,
                             highlightColor: Colors.transparent,
                             onTap: () async {
-                              context.pushNamed(
-                                'SellerProfile',
-                                queryParameters: {
-                                  'sellerId': serializeParam(
-                                    currentUserUid,
-                                    ParamType.String,
-                                  ),
-                                }.withoutNulls,
-                              );
-                            },
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Align(
-                                  alignment: const AlignmentDirectional(-1.0, 0.0),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(5.0),
-                                    child: FaIcon(
-                                      FontAwesomeIcons.userTie,
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryText,
-                                      size: 24.0,
-                                    ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
-                                      20.0, 0.0, 0.0, 0.0),
-                                  child: Text(
-                                    'Check public profile',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Readex Pro',
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                          letterSpacing: 0.0,
-                                        ),
-                                  ),
-                                ),
-                                Flexible(
-                                  child: Align(
-                                    alignment: const AlignmentDirectional(1.0, 0.0),
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(5.0),
-                                      child: FaIcon(
-                                        FontAwesomeIcons.angleRight,
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryText,
-                                        size: 18.0,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
-                            20.0, 0.0, 20.0, 20.0),
-                        child: Container(
-                          width: 350.0,
-                          height: 50.0,
-                          decoration: BoxDecoration(
-                            color:
-                                FlutterFlowTheme.of(context).primaryBackground,
-                          ),
-                          child: InkWell(
-                            splashColor: Colors.transparent,
-                            focusColor: Colors.transparent,
-                            hoverColor: Colors.transparent,
-                            highlightColor: Colors.transparent,
-                            onTap: () async {
                               context.pushNamed('MyAds');
                             },
                             child: Row(
+                              key: const ValueKey('myAdsLink'),
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Align(
@@ -364,6 +289,7 @@ class _ProfileMenuWidgetState extends State<ProfileMenuWidget> {
                               context.pushNamed('EditProfile');
                             },
                             child: Row(
+                              key: const ValueKey('editProfileLink'),
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Align(
@@ -435,6 +361,7 @@ class _ProfileMenuWidgetState extends State<ProfileMenuWidget> {
                               context.pushNamed('faqPage');
                             },
                             child: Row(
+                              key: const ValueKey('faqLink'),
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Align(
@@ -493,6 +420,84 @@ class _ProfileMenuWidgetState extends State<ProfileMenuWidget> {
                             color:
                                 FlutterFlowTheme.of(context).primaryBackground,
                           ),
+                          child: Visibility(
+                            visible:
+                                valueOrDefault(currentUserDocument?.role, '') ==
+                                    'admin',
+                            child: AuthUserStreamWidget(
+                              builder: (context) => InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                onTap: () async {
+                                  context.pushNamed('Reports');
+                                },
+                                child: Row(
+                                  key: const ValueKey('checkReportsLink'),
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Align(
+                                      alignment:
+                                          const AlignmentDirectional(-1.0, 0.0),
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(5.0),
+                                        child: Icon(
+                                          Icons.bug_report_outlined,
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryText,
+                                          size: 24.0,
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          15.0, 0.0, 0.0, 0.0),
+                                      child: Text(
+                                        'Check Reports',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Readex Pro',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                              letterSpacing: 0.0,
+                                            ),
+                                      ),
+                                    ),
+                                    Flexible(
+                                      child: Align(
+                                        alignment:
+                                            const AlignmentDirectional(1.0, 0.0),
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(5.0),
+                                          child: FaIcon(
+                                            FontAwesomeIcons.angleRight,
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryText,
+                                            size: 18.0,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
+                            20.0, 0.0, 20.0, 20.0),
+                        child: Container(
+                          width: 350.0,
+                          height: 50.0,
+                          decoration: BoxDecoration(
+                            color:
+                                FlutterFlowTheme.of(context).primaryBackground,
+                          ),
                           child: Builder(
                             builder: (context) => InkWell(
                               splashColor: Colors.transparent,
@@ -523,7 +528,7 @@ class _ProfileMenuWidgetState extends State<ProfileMenuWidget> {
                                         child: const SizedBox(
                                           height: 300.0,
                                           width: 300.0,
-                                          child: EmailSentDialogCopyWidget(),
+                                          child: LogoutSucessWidget(),
                                         ),
                                       ),
                                     );
@@ -534,6 +539,7 @@ class _ProfileMenuWidgetState extends State<ProfileMenuWidget> {
                                     'HomePage', context.mounted);
                               },
                               child: Row(
+                                key: const ValueKey('logOut'),
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
                                   Align(

@@ -150,7 +150,7 @@ class _FaqPageWidgetState extends State<FaqPageWidget> {
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Text(
-                                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                                        'MarTechPlace isn\'t quite MarTech! MarTech refers to marketing technologies used by businesses. L.EIC MarTechPlace, on the other hand, is a marketplace app specifically for Porto\'s academic community.\n\nHere at L.EIC MarTechPlace, our goal is to:\n\n- Facilitate the reuse of electronic devices among students.\n- Promote sustainability within the academic community.\n- Create a culture of solidarity and resourcefulness.\n\nThink of us as a virtual garage sale for electronics! You can find great deals on pre-owned devices, perfect for your studies, while giving unwanted tech a new life and reducing e-waste.',
                                         textAlign: TextAlign.justify,
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
@@ -209,7 +209,7 @@ class _FaqPageWidgetState extends State<FaqPageWidget> {
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Text(
-                                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                                        'Making a purchase on L.EIC MarTechPlace is easy! Here\'s a quick walk-through:\n\nFind the perfect device: Browse through our listings using filters or the search bar to find the electronics you need.\nContact the seller: Once you\'ve found the item you want, simply message the seller directly through the app to discuss details like price and condition.\nAgree on a deal: Negotiate the price (if applicable) and arrange a pick-up or delivery method directly with the seller. Important note: L.EIC MarTechPlace doesn\'t currently handle payments, so ensure a secure method with the seller (cash on pick-up is a common option).\nEnjoy your new device! Congratulations on your purchase! We hope it helps you out in your studies.',
                                         textAlign: TextAlign.justify,
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
@@ -268,7 +268,7 @@ class _FaqPageWidgetState extends State<FaqPageWidget> {
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Text(
-                                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                                        'While L.EIC MarTechPlace is still under development, we appreciate your interest! Currently, the best way to reach us is through our project website or social media pages (if available). In the future, we may implement a direct contact option within the app itself.',
                                         textAlign: TextAlign.justify,
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
@@ -327,7 +327,7 @@ class _FaqPageWidgetState extends State<FaqPageWidget> {
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Text(
-                                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                                        'Since L.EIC MarTechPlace facilitates user-to-user sales, returns are handled directly between the buyer and seller.  It\'s important to communicate your return policy clearly in your ad description and discuss any potential returns with the buyer before finalizing the deal.\n\nWe recommend establishing clear communication and setting expectations upfront to ensure a smooth buying and selling experience for everyone.',
                                         textAlign: TextAlign.justify,
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium

@@ -156,6 +156,7 @@ class _CreateNewAdWidgetState extends State<CreateNewAdWidget> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               TextFormField(
+                                key: const ValueKey('titleAd'),
                                 controller: _model.taskTextController,
                                 focusNode: _model.taskFocusNode,
                                 autofocus: false,
@@ -235,6 +236,7 @@ class _CreateNewAdWidgetState extends State<CreateNewAdWidget> {
                                     .asValidator(context),
                               ),
                               TextFormField(
+                                key: const ValueKey('descriptionAd'),
                                 controller: _model.descriptionTextController,
                                 focusNode: _model.descriptionFocusNode,
                                 autofocus: false,
@@ -316,6 +318,7 @@ class _CreateNewAdWidgetState extends State<CreateNewAdWidget> {
                                     .asValidator(context),
                               ),
                               TextFormField(
+                                key: const ValueKey('priceAd'),
                                 controller: _model.textController3,
                                 focusNode: _model.textFieldFocusNode,
                                 autofocus: false,
@@ -388,6 +391,7 @@ class _CreateNewAdWidgetState extends State<CreateNewAdWidget> {
                                     ),
                               ),
                               FlutterFlowChoiceChips(
+                                key: const ValueKey('categoriesAd'),
                                 options: const [
                                   ChipData('Portable'),
                                   ChipData('Mobile'),
@@ -460,6 +464,7 @@ class _CreateNewAdWidgetState extends State<CreateNewAdWidget> {
                                     ),
                               ),
                               TextFormField(
+                                key: const ValueKey('locationAd'),
                                 controller: _model.locationTextController,
                                 focusNode: _model.locationFocusNode,
                                 autofocus: false,
@@ -549,6 +554,7 @@ class _CreateNewAdWidgetState extends State<CreateNewAdWidget> {
                         Padding(
                           padding: const EdgeInsets.all(4.0),
                           child: FFButtonWidget(
+                            key: const ValueKey('addPhoto'),
                             onPressed: () async {
                               final selectedMedia =
                                   await selectMediaWithSourceBottomSheet(
@@ -668,6 +674,7 @@ class _CreateNewAdWidgetState extends State<CreateNewAdWidget> {
                     padding:
                         const EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 12.0),
                     child: FFButtonWidget(
+                      key: const ValueKey('createAd'),
                       onPressed: () async {
                         await AdRecord.collection.doc().set(createAdRecordData(
                               aid: random_data.randomString(

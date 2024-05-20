@@ -1,4 +1,3 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/custom_nav_bar_profile_widget.dart';
 import '/components/empty_l_ist_widget.dart';
@@ -6,25 +5,25 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'my_ads_model.dart';
-export 'my_ads_model.dart';
+import 'reports_model.dart';
+export 'reports_model.dart';
 
-class MyAdsWidget extends StatefulWidget {
-  const MyAdsWidget({super.key});
+class ReportsWidget extends StatefulWidget {
+  const ReportsWidget({super.key});
 
   @override
-  State<MyAdsWidget> createState() => _MyAdsWidgetState();
+  State<ReportsWidget> createState() => _ReportsWidgetState();
 }
 
-class _MyAdsWidgetState extends State<MyAdsWidget> {
-  late MyAdsModel _model;
+class _ReportsWidgetState extends State<ReportsWidget> {
+  late ReportsModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => MyAdsModel());
+    _model = createModel(context, () => ReportsModel());
   }
 
   @override
@@ -53,7 +52,7 @@ class _MyAdsWidgetState extends State<MyAdsWidget> {
               backgroundColor: const Color(0xFFB4E0F8),
               automaticallyImplyLeading: false,
               title: Text(
-                'My Ads',
+                'Reports',
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                       fontFamily: 'Inter',
                       color: const Color(0xFF006BAF),
@@ -83,8 +82,8 @@ class _MyAdsWidgetState extends State<MyAdsWidget> {
                             stream: queryAdRecord(
                               queryBuilder: (adRecord) => adRecord
                                   .where(
-                                    'seller_id',
-                                    isEqualTo: currentUserUid,
+                                    'reported',
+                                    isEqualTo: true,
                                   )
                                   .orderBy('name'),
                             ),
@@ -247,8 +246,8 @@ class _MyAdsWidgetState extends State<MyAdsWidget> {
                                                                         8.0,
                                                                         0.0),
                                                             child: AutoSizeText(
-                                                              listViewAdRecord
-                                                                  .category
+                                                              rowAdRecord
+                                                                  .reportReason
                                                                   .maybeHandleOverflow(
                                                                 maxChars: 70,
                                                                 replacement:
@@ -272,7 +271,7 @@ class _MyAdsWidgetState extends State<MyAdsWidget> {
                                                       ),
                                                     ),
                                                   ),
-                                                  Column(
+                                                  const Column(
                                                     mainAxisSize:
                                                         MainAxisSize.max,
                                                     mainAxisAlignment:
@@ -281,7 +280,7 @@ class _MyAdsWidgetState extends State<MyAdsWidget> {
                                                     crossAxisAlignment:
                                                         CrossAxisAlignment.end,
                                                     children: [
-                                                      const Padding(
+                                                      Padding(
                                                         padding:
                                                             EdgeInsetsDirectional
                                                                 .fromSTEB(
@@ -295,38 +294,6 @@ class _MyAdsWidgetState extends State<MyAdsWidget> {
                                                           color:
                                                               Color(0xFF57636C),
                                                           size: 24.0,
-                                                        ),
-                                                      ),
-                                                      Padding(
-                                                        padding:
-                                                            const EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    12.0,
-                                                                    4.0,
-                                                                    8.0),
-                                                        child: Text(
-                                                          formatNumber(
-                                                            listViewAdRecord
-                                                                .price,
-                                                            formatType:
-                                                                FormatType
-                                                                    .custom,
-                                                            currency: '\$',
-                                                            format: '',
-                                                            locale: '',
-                                                          ),
-                                                          textAlign:
-                                                              TextAlign.end,
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Readex Pro',
-                                                                letterSpacing:
-                                                                    0.0,
-                                                              ),
                                                         ),
                                                       ),
                                                     ],
@@ -350,7 +317,7 @@ class _MyAdsWidgetState extends State<MyAdsWidget> {
                   Align(
                     alignment: const AlignmentDirectional(0.0, 0.0),
                     child: Column(
-                      key: const ValueKey('adsColumn'),
+                      key: const ValueKey('reportsColumn'),
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.end,
                       crossAxisAlignment: CrossAxisAlignment.stretch,

@@ -300,7 +300,7 @@ class _SearchUserWidgetState extends State<SearchUserWidget> {
                                 Align(
                                   alignment: const AlignmentDirectional(0.94, -0.07),
                                   child: FFButtonWidget(
-                                    key: const ValueKey('SearchButton'),
+                                    key: const ValueKey('searchUserBoxButton'),
                                     onPressed: () async {
                                       setState(() {
                                         _model.textController?.clear();
@@ -311,7 +311,7 @@ class _SearchUserWidgetState extends State<SearchUserWidget> {
                                     },
                                     text: '',
                                     icon: const Icon(
-                                      key: ValueKey('SearchButton'),
+                                      key: ValueKey('searchUserBoxButton'),
                                       Icons.search,
                                       size: 15.0,
                                     ),
@@ -374,15 +374,15 @@ class _SearchUserWidgetState extends State<SearchUserWidget> {
                           ),
                         ),
                         if (!FFAppState().searchActive)
-                          Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                0.0, 12.0, 0.0, 0.0),
+                          Expanded(
                             child: Builder(
                               builder: (context) {
-                                final userNoSearch =
-                                    searchUserUsersRecordList.take(4).toList();
+                                final userNoSearch = searchUserUsersRecordList
+                                    .map((e) => e)
+                                    .toList();
                                 return ListView.builder(
                                   padding: EdgeInsets.zero,
+                                  primary: false,
                                   shrinkWrap: true,
                                   scrollDirection: Axis.vertical,
                                   itemCount: userNoSearch.length,
@@ -409,6 +409,7 @@ class _SearchUserWidgetState extends State<SearchUserWidget> {
                                           );
                                         },
                                         child: Container(
+                                          key: const ValueKey('userContainer'),
                                           width: 60.0,
                                           height: 130.0,
                                           decoration: BoxDecoration(
@@ -515,143 +516,154 @@ class _SearchUserWidgetState extends State<SearchUserWidget> {
                             ),
                           ),
                         if (FFAppState().searchActive)
-                          Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                0.0, 12.0, 0.0, 0.0),
-                            child: Builder(
-                              builder: (context) {
-                                final userSearch =
-                                    _model.simpleSearchResults.toList();
-                                return ListView.builder(
-                                  padding: EdgeInsets.zero,
-                                  shrinkWrap: true,
-                                  scrollDirection: Axis.vertical,
-                                  itemCount: userSearch.length,
-                                  itemBuilder: (context, userSearchIndex) {
-                                    final userSearchItem =
-                                        userSearch[userSearchIndex];
-                                    return Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          16.0, 0.0, 16.0, 16.0),
-                                      child: InkWell(
-                                        splashColor: Colors.transparent,
-                                        focusColor: Colors.transparent,
-                                        hoverColor: Colors.transparent,
-                                        highlightColor: Colors.transparent,
-                                        onTap: () async {
-                                          context.pushNamed(
-                                            'SellerProfile',
-                                            queryParameters: {
-                                              'sellerId': serializeParam(
-                                                userSearchItem.uid,
-                                                ParamType.String,
-                                              ),
-                                            }.withoutNulls,
-                                          );
-                                        },
-                                        child: Container(
-                                          key: const ValueKey('UserBox'),
-                                          width: double.infinity,
-                                          decoration: BoxDecoration(
-                                            color: Colors.white,
-                                            boxShadow: const [
-                                              BoxShadow(
-                                                blurRadius: 5.0,
-                                                color: Color(0x44111417),
-                                                offset: Offset(
-                                                  0.0,
-                                                  2.0,
+                          Expanded(
+                            child: Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 12.0, 0.0, 0.0),
+                              child: Builder(
+                                builder: (context) {
+                                  final userSearch =
+                                      _model.simpleSearchResults.toList();
+                                  return ListView.builder(
+                                    padding: EdgeInsets.zero,
+                                    primary: false,
+                                    shrinkWrap: true,
+                                    scrollDirection: Axis.vertical,
+                                    itemCount: userSearch.length,
+                                    itemBuilder: (context, userSearchIndex) {
+                                      final userSearchItem =
+                                          userSearch[userSearchIndex];
+                                      return Padding(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                            16.0, 0.0, 16.0, 16.0),
+                                        child: InkWell(
+                                          splashColor: Colors.transparent,
+                                          focusColor: Colors.transparent,
+                                          hoverColor: Colors.transparent,
+                                          highlightColor: Colors.transparent,
+                                          onTap: () async {
+                                            context.pushNamed(
+                                              'SellerProfile',
+                                              queryParameters: {
+                                                'sellerId': serializeParam(
+                                                  userSearchItem.uid,
+                                                  ParamType.String,
                                                 ),
-                                              )
-                                            ],
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
-                                          ),
-                                          child: Padding(
-                                            padding: const EdgeInsets.all(12.0),
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: [
-                                                Container(
-                                                  width: 100.0,
-                                                  height: 100.0,
-                                                  decoration: BoxDecoration(
-                                                    color: const Color(0x4C4B39EF),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8.0),
-                                                    border: Border.all(
-                                                      color: const Color(0xFF4B39EF),
-                                                      width: 2.0,
-                                                    ),
+                                              }.withoutNulls,
+                                            );
+                                          },
+                                          child: Container(
+                                            key: const ValueKey('UserBox'),
+                                            width: double.infinity,
+                                            decoration: BoxDecoration(
+                                              color: Colors.white,
+                                              boxShadow: const [
+                                                BoxShadow(
+                                                  blurRadius: 5.0,
+                                                  color: Color(0x44111417),
+                                                  offset: Offset(
+                                                    0.0,
+                                                    2.0,
                                                   ),
-                                                  alignment:
-                                                      const AlignmentDirectional(
-                                                          0.0, 0.0),
-                                                  child: Padding(
-                                                    padding:
-                                                        const EdgeInsets.all(2.0),
-                                                    child: ClipRRect(
+                                                )
+                                              ],
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
+                                            ),
+                                            child: Padding(
+                                              padding: const EdgeInsets.all(12.0),
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Container(
+                                                    width: 100.0,
+                                                    height: 100.0,
+                                                    decoration: BoxDecoration(
+                                                      color: const Color(0x4C4B39EF),
                                                       borderRadius:
                                                           BorderRadius.circular(
-                                                              6.0),
-                                                      child: Image.network(
-                                                        userSearchItem.photoUrl,
-                                                        width: double.infinity,
-                                                        height: double.infinity,
-                                                        fit: BoxFit.cover,
+                                                              8.0),
+                                                      border: Border.all(
+                                                        color:
+                                                            const Color(0xFF4B39EF),
+                                                        width: 2.0,
+                                                      ),
+                                                    ),
+                                                    alignment:
+                                                        const AlignmentDirectional(
+                                                            0.0, 0.0),
+                                                    child: Padding(
+                                                      padding:
+                                                          const EdgeInsets.all(2.0),
+                                                      child: ClipRRect(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(6.0),
+                                                        child: Image.network(
+                                                          userSearchItem
+                                                              .photoUrl,
+                                                          width:
+                                                              double.infinity,
+                                                          height:
+                                                              double.infinity,
+                                                          fit: BoxFit.cover,
+                                                        ),
                                                       ),
                                                     ),
                                                   ),
-                                                ),
-                                                Expanded(
-                                                  child: Padding(
-                                                    padding:
-                                                        const EdgeInsetsDirectional
-                                                            .fromSTEB(12.0, 0.0,
-                                                                0.0, 0.0),
-                                                    child: Column(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .center,
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .start,
-                                                      children: [
-                                                        Text(
-                                                          userSearchItem
-                                                              .displayName,
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .titleLarge
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Outfit',
-                                                                color: const Color(
-                                                                    0xFF14181B),
-                                                                fontSize: 22.0,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w500,
-                                                              ),
-                                                        ),
-                                                      ],
+                                                  Expanded(
+                                                    child: Padding(
+                                                      padding:
+                                                          const EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  12.0,
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0),
+                                                      child: Column(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .center,
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Text(
+                                                            userSearchItem
+                                                                .displayName,
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .titleLarge
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Outfit',
+                                                                  color: const Color(
+                                                                      0xFF14181B),
+                                                                  fontSize:
+                                                                      22.0,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w500,
+                                                                ),
+                                                          ),
+                                                        ],
+                                                      ),
                                                     ),
                                                   ),
-                                                ),
-                                              ],
+                                                ],
+                                              ),
                                             ),
                                           ),
                                         ),
-                                      ),
-                                    );
-                                  },
-                                );
-                              },
+                                      );
+                                    },
+                                  );
+                                },
+                              ),
                             ),
                           ),
                       ],
