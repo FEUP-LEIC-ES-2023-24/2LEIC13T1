@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:text_search/text_search.dart';
 import 'search_page_model.dart';
@@ -305,6 +306,7 @@ class _SearchPageWidgetState extends State<SearchPageWidget> {
                                 Align(
                                   alignment: const AlignmentDirectional(0.94, -0.07),
                                   child: FFButtonWidget(
+                                    key: const ValueKey('searchProdBoxButton'),
                                     onPressed: () async {
                                       if (_model.textController.text != '') {
                                         await queryAdRecordOnce()
@@ -345,6 +347,7 @@ class _SearchPageWidgetState extends State<SearchPageWidget> {
                                     },
                                     text: '',
                                     icon: const Icon(
+                                      key: ValueKey('searchProdBoxButton'),
                                       Icons.search,
                                       size: 15.0,
                                     ),
@@ -421,6 +424,7 @@ class _SearchPageWidgetState extends State<SearchPageWidget> {
                                     .toList();
                                 return ListView.builder(
                                   padding: EdgeInsets.zero,
+                                  primary: false,
                                   shrinkWrap: true,
                                   scrollDirection: Axis.vertical,
                                   itemCount: adsNoSearch.length,
@@ -495,6 +499,7 @@ class _SearchPageWidgetState extends State<SearchPageWidget> {
                                               );
                                             },
                                             child: Container(
+                                              key: const ValueKey('productContainer'),
                                               width: 60.0,
                                               height: 130.0,
                                               decoration: BoxDecoration(
@@ -662,8 +667,9 @@ class _SearchPageWidgetState extends State<SearchPageWidget> {
                                                                     MainAxisSize
                                                                         .max,
                                                                 children: [
-                                                                  const Icon(
-                                                                    Icons.euro,
+                                                                  const FaIcon(
+                                                                    FontAwesomeIcons
+                                                                        .dollarSign,
                                                                     color: Color(
                                                                         0xFF57636C),
                                                                     size: 16.0,
@@ -726,6 +732,7 @@ class _SearchPageWidgetState extends State<SearchPageWidget> {
                                     _model.simpleSearchResults1.toList();
                                 return ListView.builder(
                                   padding: EdgeInsets.zero,
+                                  primary: false,
                                   shrinkWrap: true,
                                   scrollDirection: Axis.vertical,
                                   itemCount: adsSearch.length,

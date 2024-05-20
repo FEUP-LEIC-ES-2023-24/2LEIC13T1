@@ -68,9 +68,7 @@ class _NavBarHomeWidgetState extends State<NavBarHomeWidget> {
           child: wrapWithModel(
             model: _model.customNavBarHomeModel,
             updateCallback: () => setState(() {}),
-            child: const CustomNavBarHomeWidget(
-              key: ValueKey('CustomNavBarHome_4rcq'),
-            ),
+            child: const CustomNavBarHomeWidget(),
           ),
         ),
       ),

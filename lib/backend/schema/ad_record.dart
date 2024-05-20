@@ -56,6 +56,21 @@ class AdRecord extends FirestoreRecord {
   String get aid => _aid ?? '';
   bool hasAid() => _aid != null;
 
+  // "reported" field.
+  bool? _reported;
+  bool get reported => _reported ?? false;
+  bool hasReported() => _reported != null;
+
+  // "report_reason" field.
+  String? _reportReason;
+  String get reportReason => _reportReason ?? '';
+  bool hasReportReason() => _reportReason != null;
+
+  // "reported_reason" field.
+  List<String>? _reportedReason;
+  List<String> get reportedReason => _reportedReason ?? const [];
+  bool hasReportedReason() => _reportedReason != null;
+
   void _initializeFields() {
     _name = snapshotData['name'] as String?;
     _category = snapshotData['category'] as String?;
@@ -65,6 +80,9 @@ class AdRecord extends FirestoreRecord {
     _image1 = snapshotData['image1'] as String?;
     _sellerId = snapshotData['seller_id'] as String?;
     _aid = snapshotData['aid'] as String?;
+    _reported = snapshotData['reported'] as bool?;
+    _reportReason = snapshotData['report_reason'] as String?;
+    _reportedReason = getDataList(snapshotData['reported_reason']);
   }
 
   static CollectionReference get collection =>
@@ -109,6 +127,8 @@ Map<String, dynamic> createAdRecordData({
   String? image1,
   String? sellerId,
   String? aid,
+  bool? reported,
+  String? reportReason,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -120,6 +140,8 @@ Map<String, dynamic> createAdRecordData({
       'image1': image1,
       'seller_id': sellerId,
       'aid': aid,
+      'reported': reported,
+      'report_reason': reportReason,
     }.withoutNulls,
   );
 
@@ -131,6 +153,7 @@ class AdRecordDocumentEquality implements Equality<AdRecord> {
 
   @override
   bool equals(AdRecord? e1, AdRecord? e2) {
+    const listEquality = ListEquality();
     return e1?.name == e2?.name &&
         e1?.category == e2?.category &&
         e1?.description == e2?.description &&
@@ -138,7 +161,10 @@ class AdRecordDocumentEquality implements Equality<AdRecord> {
         e1?.location == e2?.location &&
         e1?.image1 == e2?.image1 &&
         e1?.sellerId == e2?.sellerId &&
-        e1?.aid == e2?.aid;
+        e1?.aid == e2?.aid &&
+        e1?.reported == e2?.reported &&
+        e1?.reportReason == e2?.reportReason &&
+        listEquality.equals(e1?.reportedReason, e2?.reportedReason);
   }
 
   @override
@@ -150,7 +176,10 @@ class AdRecordDocumentEquality implements Equality<AdRecord> {
         e?.location,
         e?.image1,
         e?.sellerId,
-        e?.aid
+        e?.aid,
+        e?.reported,
+        e?.reportReason,
+        e?.reportedReason
       ]);
 
   @override

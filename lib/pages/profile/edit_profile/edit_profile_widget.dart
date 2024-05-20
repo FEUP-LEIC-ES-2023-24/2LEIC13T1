@@ -1,11 +1,13 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'edit_profile_model.dart';
 export 'edit_profile_model.dart';
 
@@ -26,8 +28,17 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
     super.initState();
     _model = createModel(context, () => EditProfileModel());
 
-    _model.yourNameTextController ??= TextEditingController();
+    _model.yourNameTextController ??=
+        TextEditingController(text: currentUserDisplayName);
     _model.yourNameFocusNode ??= FocusNode();
+
+    _model.yourBioTextController ??= TextEditingController(
+        text: valueOrDefault(currentUserDocument?.shortDescription, ''));
+    _model.yourBioFocusNode ??= FocusNode();
+
+    _model.yourNumberTextController ??=
+        TextEditingController(text: currentPhoneNumber);
+    _model.yourNumberFocusNode ??= FocusNode();
   }
 
   @override
@@ -95,13 +106,21 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  const Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [],
+                  Align(
+                    alignment: const AlignmentDirectional(-1.0, -1.0),
+                    child: FlutterFlowIconButton(
+                      borderColor: Colors.transparent,
+                      borderRadius: 30.0,
+                      borderWidth: 1.0,
+                      buttonSize: 60.0,
+                      icon: const Icon(
+                        Icons.arrow_back,
+                        color: Color(0xFF006BAF),
+                        size: 30.0,
+                      ),
+                      onPressed: () async {
+                        context.pushNamed('ProfileMenu');
+                      },
                     ),
                   ),
                   Align(
@@ -116,7 +135,9 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                         ),
                         child: Image.network(
                           valueOrDefault<String>(
-                            currentUserPhoto,
+                            _model.uploadedFileUrl != ''
+                                ? _model.uploadedFileUrl
+                                : currentUserPhoto,
                             'https://static-00.iconduck.com/assets.00/profile-default-icon-2048x2045-u3j7s5nj.png',
                           ),
                           fit: BoxFit.cover,
@@ -129,11 +150,11 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                     child: Padding(
                       padding: const EdgeInsets.all(6.0),
                       child: FFButtonWidget(
+                        key: const ValueKey('uploadProfilePhoto'),
                         onPressed: () async {
                           final selectedMedia =
                               await selectMediaWithSourceBottomSheet(
                             context: context,
-                            imageQuality: 100,
                             allowPhoto: true,
                           );
                           if (selectedMedia != null &&
@@ -179,6 +200,11 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                               return;
                             }
                           }
+
+                          await currentUserReference!
+                              .update(createUsersRecordData(
+                            photoUrl: _model.uploadedFileUrl,
+                          ));
                         },
                         text: 'Upload Photo',
                         options: FFButtonOptions(
@@ -206,64 +232,238 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                   ),
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 16.0),
-                    child: TextFormField(
-                      controller: _model.yourNameTextController,
-                      focusNode: _model.yourNameFocusNode,
-                      textCapitalization: TextCapitalization.words,
-                      obscureText: false,
-                      decoration: InputDecoration(
-                        labelText: 'Your New Username',
-                        labelStyle:
-                            FlutterFlowTheme.of(context).labelMedium.override(
-                                  fontFamily: 'Readex Pro',
-                                  letterSpacing: 0.0,
-                                ),
-                        hintStyle:
-                            FlutterFlowTheme.of(context).labelMedium.override(
-                                  fontFamily: 'Readex Pro',
-                                  letterSpacing: 0.0,
-                                ),
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: FlutterFlowTheme.of(context).alternate,
-                            width: 2.0,
+                        const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 14.0),
+                    child: AuthUserStreamWidget(
+                      builder: (context) => TextFormField(
+                        key: const ValueKey('usernameEditBox'),
+                        controller: _model.yourNameTextController,
+                        focusNode: _model.yourNameFocusNode,
+                        textCapitalization: TextCapitalization.words,
+                        obscureText: false,
+                        decoration: InputDecoration(
+                          labelText: 'Username',
+                          labelStyle:
+                              FlutterFlowTheme.of(context).labelMedium.override(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0.0,
+                                  ),
+                          hintStyle:
+                              FlutterFlowTheme.of(context).labelMedium.override(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0.0,
+                                  ),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: FlutterFlowTheme.of(context).alternate,
+                              width: 2.0,
+                            ),
+                            borderRadius: BorderRadius.circular(8.0),
                           ),
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: FlutterFlowTheme.of(context).primary,
-                            width: 2.0,
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: FlutterFlowTheme.of(context).primary,
+                              width: 2.0,
+                            ),
+                            borderRadius: BorderRadius.circular(8.0),
                           ),
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                        errorBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: FlutterFlowTheme.of(context).error,
-                            width: 2.0,
+                          errorBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: FlutterFlowTheme.of(context).error,
+                              width: 2.0,
+                            ),
+                            borderRadius: BorderRadius.circular(8.0),
                           ),
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                        focusedErrorBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: FlutterFlowTheme.of(context).error,
-                            width: 2.0,
+                          focusedErrorBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: FlutterFlowTheme.of(context).error,
+                              width: 2.0,
+                            ),
+                            borderRadius: BorderRadius.circular(8.0),
                           ),
-                          borderRadius: BorderRadius.circular(8.0),
+                          filled: true,
+                          fillColor:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                          contentPadding: const EdgeInsetsDirectional.fromSTEB(
+                              20.0, 24.0, 0.0, 24.0),
                         ),
-                        filled: true,
-                        fillColor:
-                            FlutterFlowTheme.of(context).secondaryBackground,
-                        contentPadding: const EdgeInsetsDirectional.fromSTEB(
-                            20.0, 24.0, 0.0, 24.0),
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily: 'Readex Pro',
+                              letterSpacing: 0.0,
+                            ),
+                        maxLength: 15,
+                        maxLengthEnforcement: MaxLengthEnforcement.enforced,
+                        buildCounter: (context,
+                                {required currentLength,
+                                required isFocused,
+                                maxLength}) =>
+                            null,
+                        validator: _model.yourNameTextControllerValidator
+                            .asValidator(context),
                       ),
-                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Readex Pro',
-                            letterSpacing: 0.0,
+                    ),
+                  ),
+                  Padding(
+                    padding:
+                        const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 16.0),
+                    child: AuthUserStreamWidget(
+                      builder: (context) => TextFormField(
+                        key: const ValueKey('bioEditBox'),
+                        controller: _model.yourBioTextController,
+                        focusNode: _model.yourBioFocusNode,
+                        textCapitalization: TextCapitalization.words,
+                        obscureText: false,
+                        decoration: InputDecoration(
+                          labelText: 'Bio',
+                          labelStyle:
+                              FlutterFlowTheme.of(context).labelMedium.override(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0.0,
+                                  ),
+                          hintStyle:
+                              FlutterFlowTheme.of(context).labelMedium.override(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0.0,
+                                  ),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: FlutterFlowTheme.of(context).alternate,
+                              width: 2.0,
+                            ),
+                            borderRadius: BorderRadius.circular(8.0),
                           ),
-                      validator: _model.yourNameTextControllerValidator
-                          .asValidator(context),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: FlutterFlowTheme.of(context).primary,
+                              width: 2.0,
+                            ),
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                          errorBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: FlutterFlowTheme.of(context).error,
+                              width: 2.0,
+                            ),
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                          focusedErrorBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: FlutterFlowTheme.of(context).error,
+                              width: 2.0,
+                            ),
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                          filled: true,
+                          fillColor:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                          contentPadding: const EdgeInsetsDirectional.fromSTEB(
+                              20.0, 24.0, 0.0, 30.0),
+                        ),
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily: 'Readex Pro',
+                              letterSpacing: 0.0,
+                            ),
+                        maxLength: 280,
+                        maxLengthEnforcement: MaxLengthEnforcement.enforced,
+                        buildCounter: (context,
+                                {required currentLength,
+                                required isFocused,
+                                maxLength}) =>
+                            null,
+                        validator: _model.yourBioTextControllerValidator
+                            .asValidator(context),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding:
+                        const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 14.0),
+                    child: AuthUserStreamWidget(
+                      builder: (context) => TextFormField(
+                        key: const ValueKey('phoneEditBox'),
+                        controller: _model.yourNumberTextController,
+                        focusNode: _model.yourNumberFocusNode,
+                        textCapitalization: TextCapitalization.none,
+                        obscureText: false,
+                        decoration: InputDecoration(
+                          labelText: 'Phone number',
+                          labelStyle:
+                              FlutterFlowTheme.of(context).labelMedium.override(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0.0,
+                                  ),
+                          hintStyle:
+                              FlutterFlowTheme.of(context).labelMedium.override(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0.0,
+                                  ),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: FlutterFlowTheme.of(context).alternate,
+                              width: 2.0,
+                            ),
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: FlutterFlowTheme.of(context).primary,
+                              width: 2.0,
+                            ),
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                          errorBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: FlutterFlowTheme.of(context).error,
+                              width: 2.0,
+                            ),
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                          focusedErrorBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: FlutterFlowTheme.of(context).error,
+                              width: 2.0,
+                            ),
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                          filled: true,
+                          fillColor:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                          contentPadding: const EdgeInsetsDirectional.fromSTEB(
+                              20.0, 24.0, 0.0, 24.0),
+                        ),
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily: 'Readex Pro',
+                              letterSpacing: 0.0,
+                            ),
+                        keyboardType: TextInputType.phone,
+                        validator: _model.yourNumberTextControllerValidator
+                            .asValidator(context),
+                        inputFormatters: [
+                          FilteringTextInputFormatter.allow(RegExp('[0-9]'))
+                        ],
+                      ),
+                    ),
+                  ),
+                  FFButtonWidget(
+                    key: const ValueKey('changePassword'),
+                    onPressed: () async {
+                      context.pushNamed('ChangePassword');
+                    },
+                    text: 'Change password',
+                    options: FFButtonOptions(
+                      width: 270.0,
+                      height: 40.0,
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                      iconPadding:
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      color: FlutterFlowTheme.of(context).primaryBackground,
+                      textStyle:
+                          FlutterFlowTheme.of(context).titleSmall.override(
+                                fontFamily: 'Readex Pro',
+                                color: const Color(0xFF006BAF),
+                                letterSpacing: 0.0,
+                              ),
+                      borderRadius: BorderRadius.circular(12.0),
                     ),
                   ),
                   Align(
@@ -272,10 +472,16 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                       padding:
                           const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
                       child: FFButtonWidget(
+                        key: const ValueKey('saveEditProfile'),
                         onPressed: () async {
                           await currentUserReference!
                               .update(createUsersRecordData(
-                            displayName: _model.yourNameTextController.text,
+                            displayName:
+                                _model.yourNameTextController.text == ''
+                                    ? currentUserDisplayName
+                                    : _model.yourNameTextController.text,
+                            shortDescription: _model.yourBioTextController.text,
+                            phoneNumber: _model.yourNumberTextController.text,
                           ));
 
                           context.pushNamed('ProfileMenu');

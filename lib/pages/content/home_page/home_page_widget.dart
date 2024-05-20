@@ -477,6 +477,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                   );
                                                 },
                                                 child: Container(
+                                                  key: const ValueKey('adContainer'),
                                                   width: double.infinity,
                                                   height: 125.0,
                                                   decoration: BoxDecoration(
@@ -662,9 +663,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   wrapWithModel(
                                     model: _model.navBarHomeModel,
                                     updateCallback: () => setState(() {}),
-                                    child: const NavBarHomeWidget(
-                                      key: ValueKey('NavBarHome_fjxx'),
-                                    ),
+                                    child: const NavBarHomeWidget(),
                                   ),
                               ],
                             ),

@@ -47,10 +47,12 @@ class _CustomNavBarHomeWidgetState extends State<CustomNavBarHomeWidget> {
             child: Padding(
               padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
               child: FlutterFlowIconButton(
+                key: const ValueKey('HomeSelButton'),
                 borderRadius: 20.0,
                 borderWidth: 1.0,
                 buttonSize: 55.0,
                 icon: Icon(
+                  key: const ValueKey('HomeSelButton'),
                   Icons.home,
                   color: FlutterFlowTheme.of(context).primaryText,
                   size: 35.0,
@@ -66,10 +68,12 @@ class _CustomNavBarHomeWidgetState extends State<CustomNavBarHomeWidget> {
             child: Padding(
               padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
               child: FlutterFlowIconButton(
+                key: const ValueKey('CreateAdButton'),
                 borderRadius: 20.0,
                 borderWidth: 1.0,
                 buttonSize: 55.0,
                 icon: Icon(
+                  key: const ValueKey('CreateAdButton'),
                   Icons.add,
                   color: FlutterFlowTheme.of(context).primaryText,
                   size: 35.0,

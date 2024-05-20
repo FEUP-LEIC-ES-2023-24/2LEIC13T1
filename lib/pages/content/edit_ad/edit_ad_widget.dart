@@ -189,6 +189,7 @@ class _EditAdWidgetState extends State<EditAdWidget> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   TextFormField(
+                                    key: const ValueKey('editTitleAd'),
                                     controller: _model.taskTextController ??=
                                         TextEditingController(
                                       text: editAdAdRecord?.name,
@@ -279,6 +280,7 @@ class _EditAdWidgetState extends State<EditAdWidget> {
                                         .asValidator(context),
                                   ),
                                   TextFormField(
+                                    key: const ValueKey('editDescriptionAd'),
                                     controller:
                                         _model.descriptionTextController ??=
                                             TextEditingController(
@@ -371,6 +373,7 @@ class _EditAdWidgetState extends State<EditAdWidget> {
                                         .asValidator(context),
                                   ),
                                   TextFormField(
+                                    key: const ValueKey('editPriceAd'),
                                     controller: _model.textController3 ??=
                                         TextEditingController(
                                       text: editAdAdRecord?.price.toString(),
@@ -453,9 +456,10 @@ class _EditAdWidgetState extends State<EditAdWidget> {
                                         ),
                                   ),
                                   FlutterFlowChoiceChips(
+                                    key: const ValueKey('editCategoryAd'),
                                     options: const [
                                       ChipData('Portable'),
-                                      ChipData('Mobile '),
+                                      ChipData('Mobile'),
                                       ChipData('Components'),
                                       ChipData('Peripherals'),
                                       ChipData('Gaming')
@@ -527,6 +531,7 @@ class _EditAdWidgetState extends State<EditAdWidget> {
                                         ),
                                   ),
                                   TextFormField(
+                                    key: const ValueKey('editLocationAd'),
                                     controller:
                                         _model.locationTextController ??=
                                             TextEditingController(
@@ -627,6 +632,7 @@ class _EditAdWidgetState extends State<EditAdWidget> {
                             Padding(
                               padding: const EdgeInsets.all(4.0),
                               child: FFButtonWidget(
+                                key: const ValueKey('editAdPhoto'),
                                 onPressed: () async {
                                   final selectedMedia =
                                       await selectMediaWithSourceBottomSheet(
@@ -754,6 +760,7 @@ class _EditAdWidgetState extends State<EditAdWidget> {
                         padding: const EdgeInsetsDirectional.fromSTEB(
                             16.0, 12.0, 16.0, 12.0),
                         child: FFButtonWidget(
+                          key: const ValueKey('updateAd'),
                           onPressed: () async {
                             await editAdAdRecord!.reference
                                 .update(createAdRecordData(

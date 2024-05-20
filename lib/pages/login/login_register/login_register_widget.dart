@@ -9,6 +9,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'login_register_model.dart';
@@ -44,6 +45,9 @@ class _LoginRegisterWidgetState extends State<LoginRegisterWidget>
 
     _model.passwordTextController ??= TextEditingController();
     _model.passwordFocusNode ??= FocusNode();
+
+    _model.usernameCreateTextController ??= TextEditingController();
+    _model.usernameCreateFocusNode ??= FocusNode();
 
     _model.emailAddressCreateTextController ??= TextEditingController();
     _model.emailAddressCreateFocusNode ??= FocusNode();
@@ -328,11 +332,14 @@ class _LoginRegisterWidgetState extends State<LoginRegisterWidget>
                                                                   .infinity,
                                                               child:
                                                                   TextFormField(
+                                                                key: const ValueKey(
+                                                                    'emailLoginBox'),
                                                                 controller: _model
                                                                     .emailAddressTextController,
                                                                 focusNode: _model
                                                                     .emailAddressFocusNode,
-                                                                autofocus: true,
+                                                                autofocus:
+                                                                    false,
                                                                 autofillHints: const [
                                                                   AutofillHints
                                                                       .email
@@ -453,6 +460,8 @@ class _LoginRegisterWidgetState extends State<LoginRegisterWidget>
                                                                   .infinity,
                                                               child:
                                                                   TextFormField(
+                                                                key: const ValueKey(
+                                                                    'passwordLoginBox'),
                                                                 controller: _model
                                                                     .passwordTextController,
                                                                 focusNode: _model
@@ -602,8 +611,13 @@ class _LoginRegisterWidgetState extends State<LoginRegisterWidget>
                                                                           16.0),
                                                               child:
                                                                   FFButtonWidget(
+                                                                key: const ValueKey(
+                                                                    'signIn'),
                                                                 onPressed:
                                                                     () async {
+                                                                  Function()
+                                                                      navigate =
+                                                                      () {};
                                                                   GoRouter.of(
                                                                           context)
                                                                       .prepareAuthEvent();
@@ -624,10 +638,34 @@ class _LoginRegisterWidgetState extends State<LoginRegisterWidget>
                                                                     return;
                                                                   }
 
-                                                                  context.goNamedAuth(
-                                                                      'ProfileMenu',
-                                                                      context
-                                                                          .mounted);
+                                                                  navigate = () =>
+                                                                      context.goNamedAuth(
+                                                                          'ProfileMenu',
+                                                                          context
+                                                                              .mounted);
+                                                                  if (!loggedIn) {
+                                                                    ScaffoldMessenger.of(
+                                                                            context)
+                                                                        .showSnackBar(
+                                                                      const SnackBar(
+                                                                        content:
+                                                                            Text(
+                                                                          'Wrong password or email',
+                                                                          style:
+                                                                              TextStyle(
+                                                                            color:
+                                                                                Colors.black,
+                                                                          ),
+                                                                        ),
+                                                                        duration:
+                                                                            Duration(milliseconds: 4000),
+                                                                        backgroundColor:
+                                                                            Color(0xFF3BB69E),
+                                                                      ),
+                                                                    );
+                                                                  }
+
+                                                                  navigate();
                                                                 },
                                                                 text: 'Sign In',
                                                                 options:
@@ -690,7 +728,7 @@ class _LoginRegisterWidgetState extends State<LoginRegisterWidget>
                                                               child:
                                                                   FFButtonWidget(
                                                                 key: const ValueKey(
-                                                                    'ForgotButton'),
+                                                                    'forgotPassword'),
                                                                 onPressed:
                                                                     () async {
                                                                   context.pushNamed(
@@ -819,6 +857,8 @@ class _LoginRegisterWidgetState extends State<LoginRegisterWidget>
                                                                             16.0),
                                                                         child:
                                                                             FFButtonWidget(
+                                                                          key: const ValueKey(
+                                                                              'googleSignIn'),
                                                                           onPressed:
                                                                               () async {
                                                                             GoRouter.of(context).prepareAuthEvent();
@@ -836,6 +876,8 @@ class _LoginRegisterWidgetState extends State<LoginRegisterWidget>
                                                                               'Continue with Google',
                                                                           icon:
                                                                               const FaIcon(
+                                                                            key:
+                                                                                ValueKey('googleSignIn'),
                                                                             FontAwesomeIcons.google,
                                                                             size:
                                                                                 20.0,
@@ -1102,12 +1144,139 @@ class _LoginRegisterWidgetState extends State<LoginRegisterWidget>
                                                                     .infinity,
                                                                 child:
                                                                     TextFormField(
+                                                                  key: const ValueKey(
+                                                                      'usernameSignupBox'),
+                                                                  controller: _model
+                                                                      .usernameCreateTextController,
+                                                                  focusNode: _model
+                                                                      .usernameCreateFocusNode,
+                                                                  autofocus:
+                                                                      false,
+                                                                  autofillHints: const [
+                                                                    AutofillHints
+                                                                        .email
+                                                                  ],
+                                                                  obscureText:
+                                                                      false,
+                                                                  decoration:
+                                                                      InputDecoration(
+                                                                    labelText:
+                                                                        'Username',
+                                                                    labelStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMedium
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              'Readex Pro',
+                                                                          letterSpacing:
+                                                                              0.0,
+                                                                        ),
+                                                                    enabledBorder:
+                                                                        OutlineInputBorder(
+                                                                      borderSide:
+                                                                          BorderSide(
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .alternate,
+                                                                        width:
+                                                                            2.0,
+                                                                      ),
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                              40.0),
+                                                                    ),
+                                                                    focusedBorder:
+                                                                        OutlineInputBorder(
+                                                                      borderSide:
+                                                                          BorderSide(
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .primary,
+                                                                        width:
+                                                                            2.0,
+                                                                      ),
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                              40.0),
+                                                                    ),
+                                                                    errorBorder:
+                                                                        OutlineInputBorder(
+                                                                      borderSide:
+                                                                          BorderSide(
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .error,
+                                                                        width:
+                                                                            2.0,
+                                                                      ),
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                              40.0),
+                                                                    ),
+                                                                    focusedErrorBorder:
+                                                                        OutlineInputBorder(
+                                                                      borderSide:
+                                                                          BorderSide(
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .error,
+                                                                        width:
+                                                                            2.0,
+                                                                      ),
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                              40.0),
+                                                                    ),
+                                                                    filled:
+                                                                        true,
+                                                                    fillColor: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondaryBackground,
+                                                                    contentPadding:
+                                                                        const EdgeInsets.all(
+                                                                            24.0),
+                                                                  ),
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Readex Pro',
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                      ),
+                                                                  maxLength: 10,
+                                                                  maxLengthEnforcement:
+                                                                      MaxLengthEnforcement
+                                                                          .enforced,
+                                                                  cursorColor:
+                                                                      FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .primary,
+                                                                  validator: _model
+                                                                      .usernameCreateTextControllerValidator
+                                                                      .asValidator(
+                                                                          context),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                            Padding(
+                                                              padding:
+                                                                  const EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          16.0),
+                                                              child: SizedBox(
+                                                                width: double
+                                                                    .infinity,
+                                                                child:
+                                                                    TextFormField(
+                                                                  key: const ValueKey(
+                                                                      'emailSignupBox'),
                                                                   controller: _model
                                                                       .emailAddressCreateTextController,
                                                                   focusNode: _model
                                                                       .emailAddressCreateFocusNode,
                                                                   autofocus:
-                                                                      true,
+                                                                      false,
                                                                   autofillHints: const [
                                                                     AutofillHints
                                                                         .email
@@ -1224,6 +1393,8 @@ class _LoginRegisterWidgetState extends State<LoginRegisterWidget>
                                                                     .infinity,
                                                                 child:
                                                                     TextFormField(
+                                                                  key: const ValueKey(
+                                                                      'passwordSignupBox'),
                                                                   controller: _model
                                                                       .passwordCreateTextController,
                                                                   focusNode: _model
@@ -1365,6 +1536,8 @@ class _LoginRegisterWidgetState extends State<LoginRegisterWidget>
                                                                     .infinity,
                                                                 child:
                                                                     TextFormField(
+                                                                  key: const ValueKey(
+                                                                      'passwordConfirmBox'),
                                                                   controller: _model
                                                                       .passwordConfirmTextController,
                                                                   focusNode: _model
@@ -1508,6 +1681,8 @@ class _LoginRegisterWidgetState extends State<LoginRegisterWidget>
                                                                             16.0),
                                                                 child:
                                                                     FFButtonWidget(
+                                                                  key: const ValueKey(
+                                                                      'createAccount'),
                                                                   onPressed:
                                                                       () async {
                                                                     GoRouter.of(
@@ -1555,13 +1730,21 @@ class _LoginRegisterWidgetState extends State<LoginRegisterWidget>
                                                                         .update(
                                                                             createUsersRecordData(
                                                                           email: _model
-                                                                              .emailAddressCreateTextController
+                                                                              .usernameCreateTextController
                                                                               .text,
                                                                           createdTime:
                                                                               getCurrentTimestamp,
                                                                           photoUrl:
                                                                               _model.uploadedFileUrl,
                                                                         ));
+
+                                                                    await currentUserReference!
+                                                                        .update(
+                                                                            createUsersRecordData(
+                                                                      displayName: _model
+                                                                          .usernameCreateTextController
+                                                                          .text,
+                                                                    ));
 
                                                                     context.goNamedAuth(
                                                                         'ProfileMenu',

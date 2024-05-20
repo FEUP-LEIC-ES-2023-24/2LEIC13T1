@@ -130,6 +130,7 @@ class _DeleteAdWidgetState extends State<DeleteAdWidget> {
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Text(
+                            key: const ValueKey('deleteAdText'),
                             'Are you sure you want to delete this ad?\nOnce you do it will be impossible to retrieve it.',
                             textAlign: TextAlign.center,
                             style:
@@ -149,6 +150,7 @@ class _DeleteAdWidgetState extends State<DeleteAdWidget> {
                               Padding(
                                 padding: const EdgeInsets.all(10.0),
                                 child: FFButtonWidget(
+                                  key: const ValueKey('deleteAdSureButton'),
                                   onPressed: () async {
                                     context.pushNamed('MyAds');
 
@@ -179,6 +181,7 @@ class _DeleteAdWidgetState extends State<DeleteAdWidget> {
                                 ),
                               ),
                               FFButtonWidget(
+                                key: const ValueKey('deleteAdCancelButton'),
                                 onPressed: () async {
                                   context.safePop();
                                 },
