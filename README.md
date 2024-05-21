@@ -184,7 +184,7 @@ One of the main hurdles was configuring our project with the Firebase API. Integ
 ## End of final Sprint
 
 <p align="center" justify="center">
-  <img src="Docs/finalsprint2.png"/>
+  <img src="Docs/finalsprint2.jpeg"/>
 </p>
 <p align="center">
   <b><i> Backlog of the End of Final Sprint</i></b>
