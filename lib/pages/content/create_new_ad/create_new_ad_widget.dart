@@ -80,9 +80,9 @@ class _CreateNewAdWidgetState extends State<CreateNewAdWidget> {
                       onTap: () async {
                         context.safePop();
                       },
-                      child: Icon(
+                      child: const Icon(
                         Icons.arrow_back,
-                        color: FlutterFlowTheme.of(context).primaryText,
+                        color: Color(0xFF15161E),
                         size: 30.0,
                       ),
                     ),

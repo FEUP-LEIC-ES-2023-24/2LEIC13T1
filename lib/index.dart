@@ -8,7 +8,6 @@ export '/pages/login/login_register/login_register_widget.dart'
     show LoginRegisterWidget;
 export '/pages/profile/profile_menu/profile_menu_widget.dart'
     show ProfileMenuWidget;
-export '/faqteste/faqteste_widget.dart' show FaqtesteWidget;
 export '/pages/seller_profile/seller_profile_widget.dart'
     show SellerProfileWidget;
 export '/pages/content/ad_content/ad_content_widget.dart' show AdContentWidget;

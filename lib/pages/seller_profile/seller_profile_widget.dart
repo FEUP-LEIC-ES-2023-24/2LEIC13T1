@@ -235,80 +235,86 @@ class _SellerProfileWidgetState extends State<SellerProfileWidget> {
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
-                                  if (!((rowChatsRecord != null) &&
-                                      rowChatsRecord.participantes.contains(
-                                          sellerProfileUsersRecord
-                                              .reference))) {
-                                    var chatsRecordReference =
-                                        ChatsRecord.collection.doc();
-                                    await chatsRecordReference.set({
-                                      ...createChatsRecordData(
-                                        chatId: random_data.randomString(
-                                          10,
-                                          10,
-                                          true,
-                                          true,
-                                          true,
+                                  if (loggedIn) {
+                                    if (rowChatsRecord?.participantes.contains(
+                                            sellerProfileUsersRecord
+                                                .reference) ==
+                                        false) {
+                                      var chatsRecordReference =
+                                          ChatsRecord.collection.doc();
+                                      await chatsRecordReference.set({
+                                        ...createChatsRecordData(
+                                          chatId: random_data.randomString(
+                                            10,
+                                            10,
+                                            true,
+                                            true,
+                                            true,
+                                          ),
+                                          lastMessage: null,
+                                          lastMessageTime: null,
                                         ),
-                                        lastMessage: null,
-                                        lastMessageTime: null,
-                                      ),
-                                      ...mapToFirestore(
-                                        {
-                                          'participantes': [
-                                            sellerProfileUsersRecord.reference
-                                          ],
-                                        },
-                                      ),
-                                    });
-                                    _model.testeSerelepeUser =
-                                        ChatsRecord.getDocumentFromData({
-                                      ...createChatsRecordData(
-                                        chatId: random_data.randomString(
-                                          10,
-                                          10,
-                                          true,
-                                          true,
-                                          true,
+                                        ...mapToFirestore(
+                                          {
+                                            'participantes': [
+                                              sellerProfileUsersRecord
+                                                  .reference
+                                            ],
+                                          },
                                         ),
-                                        lastMessage: null,
-                                        lastMessageTime: null,
-                                      ),
-                                      ...mapToFirestore(
-                                        {
-                                          'participantes': [
-                                            sellerProfileUsersRecord.reference
-                                          ],
-                                        },
-                                      ),
-                                    }, chatsRecordReference);
+                                      });
+                                      _model.testeSerelepeUser =
+                                          ChatsRecord.getDocumentFromData({
+                                        ...createChatsRecordData(
+                                          chatId: random_data.randomString(
+                                            10,
+                                            10,
+                                            true,
+                                            true,
+                                            true,
+                                          ),
+                                          lastMessage: null,
+                                          lastMessageTime: null,
+                                        ),
+                                        ...mapToFirestore(
+                                          {
+                                            'participantes': [
+                                              sellerProfileUsersRecord
+                                                  .reference
+                                            ],
+                                          },
+                                        ),
+                                      }, chatsRecordReference);
 
-                                    await _model.testeSerelepeUser!.reference
-                                        .update({
-                                      ...mapToFirestore(
-                                        {
-                                          'participantes':
-                                              FieldValue.arrayUnion(
-                                                  [currentUserReference]),
-                                        },
-                                      ),
-                                    });
+                                      await _model.testeSerelepeUser!.reference
+                                          .update({
+                                        ...mapToFirestore(
+                                          {
+                                            'participantes':
+                                                FieldValue.arrayUnion(
+                                                    [currentUserReference]),
+                                          },
+                                        ),
+                                      });
 
-                                    context.pushNamed(
-                                      'Chats',
-                                      queryParameters: {
-                                        'chatID': serializeParam(
-                                          _model.testeSerelepeUser?.reference,
-                                          ParamType.DocumentReference,
-                                        ),
-                                        'userRef': serializeParam(
-                                          sellerProfileUsersRecord.reference,
-                                          ParamType.DocumentReference,
-                                        ),
-                                      }.withoutNulls,
-                                    );
+                                      context.pushNamed(
+                                        'Chats',
+                                        queryParameters: {
+                                          'chatID': serializeParam(
+                                            _model.testeSerelepeUser?.reference,
+                                            ParamType.DocumentReference,
+                                          ),
+                                          'userRef': serializeParam(
+                                            sellerProfileUsersRecord.reference,
+                                            ParamType.DocumentReference,
+                                          ),
+                                        }.withoutNulls,
+                                      );
+                                    } else {
+                                      context.pushNamed('ChatMenu');
+                                    }
                                   } else {
-                                    context.pushNamed('ChatMenu');
+                                    context.pushNamed('LoginRegister');
                                   }
 
                                   setState(() {});

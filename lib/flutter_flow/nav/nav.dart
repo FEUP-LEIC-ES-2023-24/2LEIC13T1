@@ -109,11 +109,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier, [Widget? entryPage]) =>
           builder: (context, params) => const ProfileMenuWidget(),
         ),
         FFRoute(
-          name: 'FAQTESTE',
-          path: '/faqteste',
-          builder: (context, params) => const FaqtesteWidget(),
-        ),
-        FFRoute(
           name: 'SellerProfile',
           path: '/sellerProfile',
           builder: (context, params) => SellerProfileWidget(
