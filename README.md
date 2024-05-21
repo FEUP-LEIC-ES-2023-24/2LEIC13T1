@@ -162,5 +162,14 @@ All of the above were implemented using databases and the firebase authenticatio
 <p align="center">
   <b><i>Project Backlog of the End of Sprint 2</i></b>
 </p>
+One of the main hurdles was configuring our project with the Firebase API. Integrating Firebase effectively required substantial effort and troubleshooting, which impacted our progress. Moreover, creating and executing tests proved to be a persistent issue. Despite our efforts, the tests were not functioning correctly by the end of the sprint.
 
+## Beggining of final Sprint
+
+<p align="center" justify="center">
+  <img src="Docs/finalsprint1.png"/>
+</p>
+<p align="center">
+  <b><i>Project Backlog of the End of Sprint 2</i></b>
+</p>
 
