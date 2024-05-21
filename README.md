@@ -112,7 +112,7 @@ Users can access the app via their cellphones, enabling communication between th
   <img src="Docs/initialsprint1.jpg"/>
 </p>
 <p align="center">
-  <b><i>Project Backlog of the Beginning of Sprint 1</i></b>
+  <b><i> Backlog of the Beginning of Sprint 1</i></b>
 </p>
 
 
@@ -121,7 +121,7 @@ Users can access the app via their cellphones, enabling communication between th
   <img src="Docs/finalsprint1.jpg"/>
 </p>
 <p align="center">
-  <b><i>Project Backlog of the End of Sprint 1</i></b>
+  <b><i> Backlog of the End of Sprint 1</i></b>
 </p>
 
 
@@ -143,7 +143,7 @@ All of the above were implemented using databases and the firebase authenticatio
   <img src="Docs/initialsprint2.png"/>
 </p>
 <p align="center">
-  <b><i>Project Backlog of the Beggining of Sprint 2</i></b>
+  <b><i> Backlog of the Beggining of Sprint 2</i></b>
 </p>
 
 ## ChangeLog
@@ -160,7 +160,7 @@ All of the above were implemented using databases and the firebase authenticatio
   <img src="Docs/endsprint2.png"/>
 </p>
 <p align="center">
-  <b><i>Project Backlog of the End of Sprint 2</i></b>
+  <b><i>Backlog of the End of Sprint 2</i></b>
 </p>
 One of the main hurdles was configuring our project with the Firebase API. Integrating Firebase effectively required substantial effort and troubleshooting, which impacted our progress. Moreover, creating and executing tests proved to be a persistent issue. Despite our efforts, the tests were not functioning correctly by the end of the sprint.
 
@@ -170,7 +170,7 @@ One of the main hurdles was configuring our project with the Firebase API. Integ
   <img src="Docs/finalsprint1.png"/>
 </p>
 <p align="center">
-  <b><i>Project Backlog of the Beggining of Final Sprint</i></b>
+  <b><i> Backlog of the Beggining of Final Sprint</i></b>
 </p>
 
 ## ChangeLog
