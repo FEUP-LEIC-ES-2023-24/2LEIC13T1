@@ -170,6 +170,13 @@ One of the main hurdles was configuring our project with the Firebase API. Integ
   <img src="Docs/finalsprint1.png"/>
 </p>
 <p align="center">
-  <b><i>Project Backlog of the End of Sprint 2</i></b>
+  <b><i>Project Backlog of the Beggining of Final Sprint</i></b>
 </p>
 
+## ChangeLog
+- Implementation of [Chats](https://github.com/FEUP-LEIC-ES-2023-24/2LEIC13T1/issues/16)
+- Implementation of [Chat Menu](https://github.com/FEUP-LEIC-ES-2023-24/2LEIC13T1/issues/17)
+- Implementation of [Delete Ilegal Items](https://github.com/FEUP-LEIC-ES-2023-24/2LEIC13T1/issues/22)
+- Implementation of [Report innapropriate items](https://github.com/FEUP-LEIC-ES-2023-24/2LEIC13T1/issues/15)
+- Implementation of Widget Tests, in (integration_test/widget_test.dart).
+- Implementation of Integration Tests, in (integration_test/test.dart).
