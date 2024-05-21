@@ -189,3 +189,5 @@ One of the main hurdles was configuring our project with the Firebase API. Integ
 <p align="center">
   <b><i> Backlog of the End of Final Sprint</i></b>
 </p>
+
+The main difficulty of this sprint was definitely implementing the chat feature. It was a complex task, but we made it work. Additionally, the tests posed a challenge, but we managed to improve them as well.
