@@ -180,3 +180,12 @@ One of the main hurdles was configuring our project with the Firebase API. Integ
 - Implementation of [Report innapropriate items](https://github.com/FEUP-LEIC-ES-2023-24/2LEIC13T1/issues/15)
 - Implementation of Widget Tests, in (integration_test/widget_test.dart).
 - Implementation of Integration Tests, in (integration_test/test.dart).
+
+## End of final Sprint
+
+<p align="center" justify="center">
+  <img src="Docs/finalsprint2.png"/>
+</p>
+<p align="center">
+  <b><i> Backlog of the End of Final Sprint</i></b>
+</p>
