@@ -118,7 +118,7 @@ Users can access the app via their cellphones, enabling communication between th
 
 ## End of Sprint 1
 <p align="center" justify="center">
-  <img src="Docs/finalsprint1.jpg"/>
+  <img src="Docs/initialsprint2.jpg"/>
 </p>
 <p align="center">
   <b><i> Backlog of the End of Sprint 1</i></b>
